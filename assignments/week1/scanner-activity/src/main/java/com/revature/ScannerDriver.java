@@ -30,6 +30,7 @@ public class ScannerDriver {
 					reversedString += userInput.charAt(i);
 				}
 				System.out.println(reversedString);
+				reversedString = "";
 				System.out.println("-------------");
 				System.out.println("1: Get a random number between 1 and 100");
 				System.out.println("2: Reverse a String");
