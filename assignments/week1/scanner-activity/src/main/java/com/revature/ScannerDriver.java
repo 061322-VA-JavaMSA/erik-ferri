@@ -5,7 +5,10 @@ import java.util.Scanner;
 public class ScannerDriver {
 	
 	public static void main(String[] args) {
-		
+		menu();
+	}
+	
+	public static void menu() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("Welcome! Please enter a number between 1 and 3.");
 		System.out.println("1: Get a random number between 1 and 100");
@@ -47,6 +50,6 @@ public class ScannerDriver {
 		}
 		
 		scan.close();
-
 	}
+	
 }
