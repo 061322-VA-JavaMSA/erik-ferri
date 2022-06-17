@@ -1,6 +1,7 @@
 package com.revature;
 
 import java.util.Scanner;
+import com.revature.models.*;
 
 public class Driver {
 	
@@ -8,9 +9,26 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		
-		displayInstrumentMenu();
-		handleInstrumentSelection();
+//		displayInstrumentMenu();
+//		handleInstrumentSelection();
+		printUser();
 		
+	}
+	
+	public static void printUser() {
+		Scanner scan = new Scanner(System.in);
+		String username;
+		String password;
+		System.out.println("What is your username?");
+		userInput = scan.nextLine();
+		username = userInput;
+		System.out.println("What is your password?");
+		userInput = scan.nextLine();
+		password = userInput;
+		User newUser = new User(username, password);
+		System.out.println("Username: " + newUser.username);
+		System.out.println("Password: " + newUser.password);
+		scan.close();
 	}
 	
 	public static void displayInstrumentMenu() {
