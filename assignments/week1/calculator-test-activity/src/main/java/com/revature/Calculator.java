@@ -28,6 +28,10 @@ public class Calculator {
 	}
 	
 	public int sumOfAnArray(int[] intArr) {
-		return 0;
+		int counter = 0;
+		for(int i = 0; i < intArr.length; i++) {
+			counter += intArr[i];
+		}
+		return counter;
 	}
 }
