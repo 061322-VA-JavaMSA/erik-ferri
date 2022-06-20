@@ -8,7 +8,7 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
-import com.revature.exceptions.Number13Exception;
+import com.revature.exceptions.*;
 
 public class CalculatorTest {
 
@@ -41,10 +41,17 @@ public class CalculatorTest {
 	@Test
 	public void addEightAndFive() {
 		assertThrows(Number13Exception.class, () -> sut.add(8, 5));
+//		sut.add(8, 5);
 	}
 	
 	@Test
 	public void addZeroAndThirteen() {
 		assertThrows(Number13Exception.class, () -> sut.add(0, 13));
+	}
+	
+	@Test
+	public void divideSevenAndZero() {
+		assertThrows(DivideBy0Exception.class, () -> sut.divide(7, 0));
+//		sut.divide(7, 0);
 	}
 }
