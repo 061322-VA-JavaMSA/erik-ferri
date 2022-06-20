@@ -1,1 +1,15 @@
-I like playing piano, ukulele, Star Wars, Zelda, Pokémon, The Elder Scrolls, The Simpsons, Spider-Man, Seinfeld, Hey Arnold!, Dire Straits, Anri, nature, traveling, and Ovaltine.
+I like:
+-Playing piano and ukulele
+-Star Wars
+-Zelda
+-Pokémon
+-The Elder Scrolls
+-The Simpsons
+-Spider-Man
+-Seinfeld
+-Hey Arnold!
+-Dire Straits
+-Anri
+-Nature
+-Traveling
+-Ovaltine
