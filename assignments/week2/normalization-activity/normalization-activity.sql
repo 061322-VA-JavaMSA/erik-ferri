@@ -13,7 +13,7 @@ create table if not exists sales_offices (
 
 create table if not exists sales_staff (
 	employee_id serial primary key,
-	sales_person varchar(30),
+	sales_person_name varchar(30),
 	DoB date,
 	sales_office integer references sales_offices(office_id)
 );
