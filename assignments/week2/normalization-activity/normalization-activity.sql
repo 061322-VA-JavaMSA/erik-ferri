@@ -21,6 +21,5 @@ create table if not exists sales_staff (
 create table if not exists customers (
 	customer_id serial primary key,
 	customer_name varchar(30),
-	sales_person integer references sales_staff(employee_id),
-	sales_office integer references sales_offices(office_id)
+	sales_person integer references sales_staff(employee_id)
 );
