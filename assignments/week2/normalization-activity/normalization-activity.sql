@@ -1,17 +1,26 @@
-drop table if exists SalesStaff;
-create table if not exists SalesStaff (
-	Employee_ID SERIAL primary KEY,
-	Sales_Person VARCHAR(30),
-	SO_Street VARCHAR(30),
-	SO_City VARCHAR(30),
-	SO_State VARCHAR(30),
-	SO_Zip INTEGER,
-	Age INTEGER,
-	DoB DATE
+drop table if exists sales_offices;
+drop table if exists sales_staff;
+drop table if exists customers;
+
+create table if not exists sales_offices (
+	office_id serial primary key,
+	office_name varchar(30),
+	street varchar(30),
+	city varchar(30),
+	state varchar(30),
+	zip integer
 );
 
-drop table if exists Customers;
-create table if not exists Customers (
-	Customer_ID SERIAL primary KEY,
-	Customer_Name VARCHAR(30)
+create table if not exists sales_staff (
+	employee_id serial primary key,
+	sales_person varchar(30),
+	DoB date,
+	sales_office integer references sales_offices(office_id)
+);
+
+create table if not exists customers (
+	customer_id serial primary key,
+	customer_name varchar(30),
+	sales_person integer references sales_staff(employee_id),
+	sales_office integer references sales_offices(office_id)
 );
