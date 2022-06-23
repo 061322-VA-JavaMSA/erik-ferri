@@ -1,10 +1,11 @@
 package com.revature;
 
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.SQLException;
-//import java.util.Scanner;
-//import com.revature.models.*;
+import java.util.Scanner;
+
+//import com.revature.exceptions.*;
+import com.revature.models.*;
+//import com.revature.services.*;
+//import java.sql.Connection;
 
 public class Driver {
 	
@@ -12,16 +13,6 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		
-		String url = "jdbc:postgresql://database-1.cu0916am5vgq.us-east-1.rds.amazonaws.com:5432/postgres";
-		String username = "postgres";
-		String password = "";
-		
-		try {
-			Connection c = DriverManager.getConnection(url,username,password);
-			System.out.println(c.getMetaData().getDriverName());;
-		} catch (SQLException e) {
-			e.printStackTrace();
-		}
 //		displayInstrumentMenu();
 //		handleInstrumentSelection();
 //		printUser();
@@ -71,3 +62,58 @@ public class Driver {
 //		}
 //	}
 }
+
+//public class Driver {
+//	
+//	static Scanner scan;
+//	static AuthService as;
+//	static UserService us;
+//	static TaskService ts;
+//	
+//	public static void main(String[] args) {
+//		scan = new Scanner(System.in);
+//		as = new AuthService();
+//		us = new UserService();
+//		ts = new TaskService();
+//		
+//		String username = null;
+//		String password = null;
+//		
+//		System.out.println("Please enter username:");
+//		username = scan.nextLine();
+//		System.out.println("Please enter password:");
+//		password = scan.nextLine();
+//		
+//		try {
+//			System.out.println(as.login(username, password));
+//		} catch (LoginException e) {
+//			System.out.println("Invalid credentials.");
+////			e.printStackTrace();
+//		}
+//
+//		
+//		List<User> users = us.getUsers();
+//		for(User u : users) {
+//			System.out.println(u);
+//		}	
+//		// "1; drop table users"
+//		System.out.println("Create, username:");
+//		String uname = scan.nextLine();
+//		System.out.println("Create, password:");
+//		String pass = scan.nextLine();
+//		User userTBC = new User();
+//		userTBC.setUsername(uname);
+//		userTBC.setPassword(pass);
+//		System.out.println(us.createUser(userTBC));
+//		
+//		System.out.println("Retrieve tasks for which user id?");
+//		int userId = Integer.parseInt(scan.nextLine());
+//		List<Task> tasksForUser = ts.getTasksByUserId(userId);
+//		for(Task t : tasksForUser) {
+//			System.out.println(t);
+//		}
+//		
+//		scan.close();
+//	}
+//
+//}
