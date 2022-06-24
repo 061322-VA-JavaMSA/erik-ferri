@@ -32,7 +32,6 @@ public class ConnectionUtil {
 			c = DriverManager.getConnection(url, username, password);
 		}
 		
-		System.out.println(c.getMetaData().getDriverName());
 		return c;
 	}
 }
