@@ -44,6 +44,6 @@ public class LoginView {
 //			e.printStackTrace();
 		}
 		
-		scan.close();
+		CustomerView.printCustomerDetails(username,password);
 	}
 }

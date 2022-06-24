@@ -1,5 +1,0 @@
-13:29:11 [main] INFO  com.revature.views.LoginView - User [id=1, username=eferri, password=testpassword]
-14:36:34 [main] INFO  com.revature.views.LoginView - User [id=1, username=eferri, password=testpassword]
-14:44:15 [main] ERROR com.revature.views.LoginView - Login exception was thrown: com.revature.exceptions.LoginException
-14:47:38 [main] INFO  com.revature.views.LoginView - User [id=1, username=eferri, password=testp]
-14:47:49 [main] ERROR com.revature.views.LoginView - Login exception was thrown: com.revature.exceptions.LoginException
