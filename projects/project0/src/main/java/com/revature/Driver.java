@@ -1,47 +1,26 @@
 package com.revature;
 
-import java.util.List;
-import java.util.Scanner;
+//import java.util.List;
+//import java.util.Scanner;
 
+import com.revature.views.*;
 //import com.revature.exceptions.*;
-import com.revature.models.*;
+//import com.revature.models.*;
 //import com.revature.services.*;
 //import java.sql.Connection;
-import com.revature.daos.*;
+//import com.revature.daos.*;
 
 public class Driver {
-	
-//	static String userInput;
 	
 	public static void main(String[] args) {
 		
 //		displayInstrumentMenu();
 //		handleInstrumentSelection();
-//		printUser();
-		UserPostgres up = new UserPostgres();
-		User userTBC = new User();
-		userTBC.setUsername("Test Username");
-		userTBC.setPassword("Test Password");
-		up.createUser(userTBC);
+		FrontDoorView.welcome();
 		
 	}
 	
-//	public static void printUser() {
-//		Scanner scan = new Scanner(System.in);
-//		String username;
-//		String password;
-//		System.out.println("What is your username?");
-//		userInput = scan.nextLine();
-//		username = userInput;
-//		System.out.println("What is your password?");
-//		userInput = scan.nextLine();
-//		password = userInput;
-//		User newUser = new User(username, password);
-//		System.out.println("Username: " + newUser.username);
-//		System.out.println("Password: " + newUser.password);
-//		scan.close();
-//	}
-//	
+
 //	public static void displayInstrumentMenu() {
 //		System.out.println("Welcome to the Music Store! Please enter the number associated with what you want to buy:");
 //		System.out.println("1: Guitar");
