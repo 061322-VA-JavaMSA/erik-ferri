@@ -19,8 +19,8 @@ public class Driver {
 		FrontDoorView.welcome();
 		
 	}
-	
 
+	
 //	public static void displayInstrumentMenu() {
 //		System.out.println("Welcome to the Music Store! Please enter the number associated with what you want to buy:");
 //		System.out.println("1: Guitar");
