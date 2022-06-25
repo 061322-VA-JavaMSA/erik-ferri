@@ -8,8 +8,13 @@ public class FrontDoorView {
 
 	public static void welcome() {
 		Scanner scan = new Scanner(System.in);
-		
-		System.out.println("Welcome to the Music Store! Please select an option below:");
+		System.out.println("                                                                 ,_ _                                          ");
+		System.out.println(" (|  |  |_/_ |\\  _   _           _    _|_  _     _|_ |)    _    /| | |         ,  o  _      ()_|_  _   ,_   _ |");
+		System.out.println("  |  |  | |/ |/ /   / \\_/|/|/|  |/     |  / \\_    |  |/\\  |/     | | |  |  |  / \\_| /       /\\ |  / \\_/  | |/ |");
+		System.out.println("   \\/ \\/  |_/|_/\\__/\\_/  | | |_/|_/    |_/\\_/     |_/|  |/|_/    | | |_/ \\/|_/ \\/ |/\\__/   /(_)|_/\\_/    |/|_/o");
+                            
+		System.out.println("");
+		System.out.println("Please select an option below:");
 		System.out.println("1: Login");
 		System.out.println("2: Sign Up");
 		System.out.println("3: Exit Store");
