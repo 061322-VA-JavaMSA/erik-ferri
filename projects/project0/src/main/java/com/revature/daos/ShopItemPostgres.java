@@ -3,7 +3,8 @@ package com.revature.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-//import java.sql.SQLException;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -12,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.revature.models.ShopItem;
 import com.revature.models.Customer;
-//import com.revature.services.CustomerService;
+import com.revature.services.ShopItemService;
 import com.revature.util.ConnectionUtil;
 
 public class ShopItemPostgres implements ShopItemDAO {
@@ -27,8 +28,29 @@ public class ShopItemPostgres implements ShopItemDAO {
 
 	@Override
 	public List<ShopItem> retrieveShopItems() {
-		// TODO Auto-generated method stub
-		return null;
+		String sql = "select * from shop_items;";
+		List<ShopItem> shopItems = new ArrayList<>();
+		
+		try(Connection c = ConnectionUtil.getConnectionFromFile()){
+			// no user input taken, no need for prepared statement
+			Statement s = c.createStatement();
+			ResultSet rs = s.executeQuery(sql);
+			
+			while(rs.next()) {
+				// extract each field from rs for each record, map them to a ShopItem object and add them to the users arraylist
+				ShopItem si = new ShopItem();
+//				si.setId(rs.getInt("id"));
+				si.setName(rs.getString("item_name"));
+				
+				shopItems.add(si);
+			}
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		return shopItems;
+		
 	}
 
 	@Override
@@ -38,7 +60,7 @@ public class ShopItemPostgres implements ShopItemDAO {
 	}
 
 	@Override
-	public List<ShopItem> retrieveShopItemsById(int id) {
+	public List<ShopItem> retrieveShopItemsByUserId(int id) {
 		String sql = "select si.id, si.item_name, si.item_description, si.item_highest_offer, si.item-owned, si.purchased_by , u.username from ShopItems si join users u on si.user_assigned_id = u.id where user_assigned_id = ?;";
 		List<ShopItem> ShopItems = new ArrayList<>();
 		

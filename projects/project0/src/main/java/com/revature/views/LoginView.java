@@ -16,6 +16,7 @@ public class LoginView {
 	static Scanner scan;
 	static AuthService as;
 	static UserService us;
+	static CustomerView cv;
 	private static Logger log = LogManager.getLogger(LoginView.class);
 
 	public static void login() {
@@ -24,6 +25,7 @@ public class LoginView {
 //		User userTTL = new User();
 		as = new AuthService();
 		us = new UserService();
+		cv = new CustomerView();
 		
 		String username = null;
 		String password = null;
@@ -44,6 +46,6 @@ public class LoginView {
 //			e.printStackTrace();
 		}
 		
-		CustomerView.printCustomerDetails(username,password);
+		cv.customerEntry(username,password);
 	}
 }
