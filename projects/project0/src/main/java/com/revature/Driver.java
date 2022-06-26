@@ -14,20 +14,11 @@ public class Driver {
 	
 	public static void main(String[] args) {
 		
-//		displayInstrumentMenu();
 //		handleInstrumentSelection();
 		FrontDoorView.welcome();
 		
 	}
 
-	
-//	public static void displayInstrumentMenu() {
-//		System.out.println("Welcome to the Music Store! Please enter the number associated with what you want to buy:");
-//		System.out.println("1: Guitar");
-//		System.out.println("2: Drums");
-//		System.out.println("3: Microphone");
-//		System.out.println("4: Exit Store");
-//	}
 //	
 //	public static void handleInstrumentSelection() {
 //		Scanner scan = new Scanner(System.in);
