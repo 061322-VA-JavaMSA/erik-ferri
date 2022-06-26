@@ -6,13 +6,13 @@ import com.revature.models.ShopItem;
 //import com.revature.services.CustomerService;
 import com.revature.services.ShopItemService;
 
-public class CustomerView {
+public class EmployeeView {
 	
-//	CustomerService cs = new CustomerService();
+//	CustomerService cs = new EmployeeService();
 	ShopItemService sis = new ShopItemService();
 
-	public void customerEntry(String username, String password) {
-		System.out.println("Welcome to our shop, " + username + "!");
+	public void employeeEntry(String username, String password) {
+		System.out.println("Welcome to the employee portal, " + username + "!");
 		displayItemList();
 	}
 	
