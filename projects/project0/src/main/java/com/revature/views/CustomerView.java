@@ -12,7 +12,7 @@ public class CustomerView {
 	ShopItemService sis = new ShopItemService();
 
 	public void customerEntry(String username, String password) {
-		System.out.println("Welcome to our shop, " + username + "!");
+		System.out.println("Welcome, " + username + "!");
 		displayItemList();
 	}
 	
