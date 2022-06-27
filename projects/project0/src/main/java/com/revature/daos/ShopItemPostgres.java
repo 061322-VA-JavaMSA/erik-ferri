@@ -42,7 +42,7 @@ public class ShopItemPostgres implements ShopItemDAO {
 
 	@Override
 	public List<ShopItem> retrieveShopItems() {
-		String sql = "select * from shop_items;";
+		String sql = "select * from shop_items order by id;";
 		List<ShopItem> shopItems = new ArrayList<>();
 
 		try (Connection c = ConnectionUtil.getConnectionFromFile()) {
@@ -84,6 +84,7 @@ public class ShopItemPostgres implements ShopItemDAO {
 				si = new ShopItem();
 				si.setId(rs.getInt("id"));
 				si.setItemName(rs.getString("item_name"));
+				si.setHighestOffer(rs.getFloat("highest_offer"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -104,7 +105,7 @@ public class ShopItemPostgres implements ShopItemDAO {
 			ResultSet rs = ps.executeQuery();
 
 			while (rs.next()) {
-				ShopItem si = new ShopItem();
+				ShopItem si = new ShopItem();  
 				si.setId(rs.getInt("id"));
 				si.setItemName(rs.getString("item-name"));
 				si.setItemDescription(rs.getString("item-description"));
@@ -127,17 +128,19 @@ public class ShopItemPostgres implements ShopItemDAO {
 	}
 
 	@Override
-	public boolean makeShopItemOffer(double offer, ShopItem si) {
-		String sql = "update shop_items set item_highest_offer = ? where id = ?;";
+	public boolean makeShopItemOffer(float offer, ShopItem si) {
+		String sql = "update shop_items set highest_offer = ? where id = ?;";
 		int rowsChanged = -1;
 		
 		try(Connection c = ConnectionUtil.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setDouble(1, offer);
+			ps.setFloat(1, offer);
 			ps.setInt(2, si.getId());
 			
-			rowsChanged = ps.executeUpdate();
+			if(offer > si.getHighestOffer()) {
+				rowsChanged = ps.executeUpdate();
+			}
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block

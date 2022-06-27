@@ -45,8 +45,8 @@ public class ShopItem {
 		return highestOffer;
 	}
 	
-	public void setHighestOffer(float highestOffer) {
-		this.highestOffer = highestOffer;
+	public void setHighestOffer(float offer) {
+		this.highestOffer = offer;
 	}
 	
 	public String getOwned() {

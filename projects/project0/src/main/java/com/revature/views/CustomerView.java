@@ -21,19 +21,24 @@ public class CustomerView {
 		
 		Scanner scan = new Scanner(System.in);
 //		ShopItem si = new ShopItem();
-		double offer = 0;
 		
 		System.out.println("Welcome, " + username + "!");
 		displayItemList();
 		System.out.println("Which item would you like to make an offer on");
 		userInput = scan.nextLine();
+		
 //		idTBR = id to be retrieved
 		int idTBR = Integer.parseInt(userInput);
 		si = sid.retrieveShopItemById(idTBR);
 		
+		float standingOffer = si.getHighestOffer();		
+		System.out.println("Standing Offer: " + standingOffer);
+		
 		System.out.println("Make an offer");
 		userInput = scan.nextLine();
-		cs.makeOffer(Integer.parseInt(userInput), si);
+		float offer = Float.parseFloat(userInput);
+
+		cs.makeOffer(offer, si);
 		
 	}
 	

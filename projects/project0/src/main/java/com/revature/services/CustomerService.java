@@ -16,8 +16,8 @@ public class CustomerService {
 
 	private ShopItemDAO sid = new ShopItemPostgres();
 
-	public boolean makeOffer(double offer, ShopItem si) {
-		//
+	public boolean makeOffer(float offer, ShopItem si) {
+		
 		return sid.makeShopItemOffer(offer, si);
 	}
 }
