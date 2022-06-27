@@ -31,7 +31,7 @@ public class EmployeeView {
 			System.out.println("Enter the name of the item you wish to add:");
 			userInput = scan.nextLine();
 			ShopItem itemTBC = new ShopItem();
-			itemTBC.setName(userInput);
+			itemTBC.setItemName(userInput);
 			sip.createShopItem(itemTBC);
 			scan.close();
 		}
@@ -40,7 +40,7 @@ public class EmployeeView {
 	public void displayItemList() {
 		List<ShopItem> shopItems = sis.getShopItems();
 		for(int i = 0; i < shopItems.size(); i++) {
-			System.out.println(sis.getShopItems().get(i).getName());
+			System.out.println(sis.getShopItems().get(i).getItemName());
 		}
 	}
 }

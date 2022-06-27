@@ -6,8 +6,8 @@ import java.util.Objects;
 public class ShopItem {
 
 	private int id;
-	private String name;
-	private String description;
+	private String itemName;
+	private String itemDescription;
 	private float highestOffer;
 	private String owned;
 	private Customer purchasedBy;
@@ -25,20 +25,20 @@ public class ShopItem {
 		this.id = id;
 	}
 
-	public String getName() {
-		return name;
+	public String getItemName() {
+		return itemName;
 	}
 	
-	public void setName(String name) {
-		this.name = name;
+	public void setItemName(String itemName) {
+		this.itemName = itemName;
 	}
 	
-	public String getDescription() {
-		return description;
+	public String getItemDescription() {
+		return itemDescription;
 	}
 	
-	public void setDescription(String description) {
-		this.description = description;
+	public void setItemDescription(String itemDescription) {
+		this.itemDescription = itemDescription;
 	}
 
 	public float getHighestOffer() {
@@ -67,7 +67,7 @@ public class ShopItem {
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, name, description, highestOffer, owned, purchasedBy);
+		return Objects.hash(id, itemName, itemDescription, highestOffer, owned, purchasedBy);
 	}
 	
 	@Override
@@ -79,14 +79,14 @@ public class ShopItem {
 		if (getClass() != obj.getClass())
 			return false;
 		ShopItem other = (ShopItem) obj;
-		return id == other.id && Objects.equals(name, other.name) && Objects.equals(description, other.description)
+		return id == other.id && Objects.equals(itemName, other.itemName) && Objects.equals(itemDescription, other.itemDescription)
 				&& highestOffer == other.highestOffer && Objects.equals(owned, other.owned)
 				&& Objects.equals(purchasedBy, other.purchasedBy);
 	}
 	
 	@Override
 	public String toString() {
-		return "ShopItem [id=" + id + ", name=" + name + ", description=" + description + ", highestOffer=" + highestOffer
+		return "ShopItem [id=" + id + ", itemName=" + itemName + ", itemDescription=" + itemDescription + ", highestOffer=" + highestOffer
 				+ ", owned=" + owned + ", purchasedBy=" + purchasedBy + "]";
 	}
 }
