@@ -11,5 +11,6 @@ public interface ShopItemDAO {
 	ShopItem retrieveShopItemById(int id);
 	List<ShopItem> retrieveShopItemsByUserId(int id);
 	boolean makeShopItemOffer(float offer, ShopItem si, int customerID);
+	boolean acceptShopItemOffer(int id);
 //	boolean deleteShopItemById(int id);
 }

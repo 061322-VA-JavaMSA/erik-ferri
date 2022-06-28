@@ -52,10 +52,12 @@ public class ShopItemPostgres implements ShopItemDAO {
 
 			while (rs.next()) {
 				// extract each field from rs for each record, map them to a ShopItem object and
-				// add them to the users arraylist
+				// add them to the shopItems arraylist
 				ShopItem si = new ShopItem();
 //				si.setId(rs.getInt("id"));
 				si.setItemName(rs.getString("item_name"));
+				si.setHighestOffer(rs.getFloat("highest_offer"));
+				si.setOwned(rs.getString("item_owned"));
 
 				shopItems.add(si);
 			}
@@ -142,6 +144,29 @@ public class ShopItemPostgres implements ShopItemDAO {
 			if(offer > si.getHighestOffer()) {
 				rowsChanged = ps.executeUpdate();
 			}
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(rowsChanged < 1) {
+			return false;
+		}
+		return true;
+	}
+	
+	public boolean acceptShopItemOffer(int id) {
+		String sql = "update shop_items set item_owned = ? where id = ?;";
+		int rowsChanged = -1;
+		
+		try(Connection c = ConnectionUtil.getConnectionFromFile()){
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setString(1, "yes"); 
+			ps.setInt(2, id);
+			
+			rowsChanged = ps.executeUpdate();
 			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
