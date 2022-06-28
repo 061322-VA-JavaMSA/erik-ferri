@@ -200,5 +200,26 @@ public class ShopItemPostgres implements ShopItemDAO {
 		}
 		return true;
 	}
+	
+	@Override
+	public boolean deleteShopItemById(int id) {
+		String sql = "delete from shop_items where id = ?;";
+		int rowsChanged = -1;
+		try(Connection c = ConnectionUtil.getConnectionFromFile()){
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setInt(1, id);
+			
+			rowsChanged = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
+		if(rowsChanged < 1) {
+			return false;
+		}
+		return true;
+	}
 }

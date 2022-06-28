@@ -29,24 +29,24 @@ public class EmployeeView {
 		System.out.println("Please select an option:");
 		System.out.println("1: Accept/Reject Offer");
 		System.out.println("2: Add item to shop");
+		System.out.println("3: Remove item from shop");
 		userInput = scan.nextLine();
 		
 		if(userInput.equals("1")) {
-			System.out.println("Enter the number of the item you'd like accept/reject");
+			System.out.println("Enter the number of the item whose offer you'd like accept/reject:");
 			displayItemList();
 			userInput = scan.nextLine();
 			System.out.println("Would you like to accept or reject this offer?");
 			System.out.println("1: Accept");
 			System.out.println("2: Reject");
 			
-//			itemTBO = item to be owned
-			int itemTBO = Integer.parseInt(userInput);
+			int itemId = Integer.parseInt(userInput);
 			userInput = scan.nextLine();
 			
 			if(userInput.equals("1")) {
-				sid.acceptShopItemOffer(itemTBO);
+				sid.acceptShopItemOffer(itemId);
 			} else if(userInput.equals("2")) {
-				sid.rejectShopItemOffer(itemTBO);
+				sid.rejectShopItemOffer(itemId);
 			}
 			
 		} else if(userInput.equals("2")){
@@ -55,6 +55,14 @@ public class EmployeeView {
 			ShopItem itemTBC = new ShopItem();
 			itemTBC.setItemName(userInput);
 			sid.createShopItem(itemTBC);
+			scan.close();
+			
+		} else if(userInput.equals("3")) {
+			System.out.println("Enter the name of the item you wish to remove:");
+			userInput = scan.nextLine();
+			int itemId = Integer.parseInt(userInput);
+//			itemTBD.setItemName(userInput);
+			sid.deleteShopItemById(itemId);
 			scan.close();
 		} else {
 			System.out.println("Invalid entry. Try again.");

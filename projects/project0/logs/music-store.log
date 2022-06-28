@@ -170,3 +170,4 @@
 13:01:58 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
 13:02:22 [main] INFO  com.revature.views.LoginView - User [id=1, username=employee1, password=pw]
 14:31:34 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+17:39:32 [main] INFO  com.revature.views.LoginView - User [id=1, username=employee1, password=pw]
