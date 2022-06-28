@@ -18,9 +18,14 @@ public class EmployeeView {
 
 	public void employeeEntry(String username, String password) {
 		
+		System.out.println("Welcome to the employee portal, " + username + "!");
+		employeePortal();
+	}
+	
+	public void employeePortal() {
+		
 		Scanner scan = new Scanner(System.in);
 		
-		System.out.println("Welcome to the employee portal, " + username + "!");
 		System.out.println("Please select an option:");
 		System.out.println("1: Accept/Reject Offer");
 		System.out.println("2: Add item to shop");
@@ -40,15 +45,22 @@ public class EmployeeView {
 			
 			if(userInput.equals("1")) {
 				sid.acceptShopItemOffer(itemTBO);
+			} else if(userInput.equals("2")) {
+				sid.rejectShopItemOffer(itemTBO);
 			}
 			
-		} else {
+		} else if(userInput.equals("2")){
 			System.out.println("Enter the name of the item you wish to add:");
 			userInput = scan.nextLine();
 			ShopItem itemTBC = new ShopItem();
 			itemTBC.setItemName(userInput);
 			sid.createShopItem(itemTBC);
 			scan.close();
+		} else {
+			System.out.println("Invalid entry. Try again.");
+//			Recursive
+			employeePortal();
+			
 		}
 	}
 	

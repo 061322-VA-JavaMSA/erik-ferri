@@ -178,5 +178,27 @@ public class ShopItemPostgres implements ShopItemDAO {
 		}
 		return true;
 	}
+	
+	public boolean rejectShopItemOffer(int id) {
+		String sql = "update shop_items set highest_offer = null, customer_id = null where id = ?;";
+		int rowsChanged = -1;
+		
+		try(Connection c = ConnectionUtil.getConnectionFromFile()){
+			PreparedStatement ps = c.prepareStatement(sql);
+			
+			ps.setInt(1, id);
+			
+			rowsChanged = ps.executeUpdate();
+			
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+		if(rowsChanged < 1) {
+			return false;
+		}
+		return true;
+	}
 
 }
