@@ -107,3 +107,8 @@
 19:39:24 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
 19:39:50 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
 19:40:19 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+22:26:37 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+22:27:29 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+22:28:39 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+22:29:25 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+22:29:59 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]

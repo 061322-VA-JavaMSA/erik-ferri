@@ -38,7 +38,14 @@ public class CustomerView {
 		userInput = scan.nextLine();
 		float offer = Float.parseFloat(userInput);
 
-		cs.makeOffer(offer, si);
+		boolean offerWentThrough = cs.makeOffer(offer, si);
+		if(offerWentThrough == true) {
+			System.out.println("We have received your offer!");
+		} else {
+			System.out.println("Sorry, a higher offer has already been made on that item.");
+		}
+		
+		
 		
 	}
 	
