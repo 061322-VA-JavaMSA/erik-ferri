@@ -10,7 +10,7 @@ public class ShopItem {
 	private String itemDescription;
 	private float highestOffer;
 	private String owned;
-	private Customer purchasedBy;
+	private int customerID;
 	
 	public ShopItem() {
 		super();
@@ -57,17 +57,17 @@ public class ShopItem {
 		this.owned = owned;
 	}
 	
-	public Customer getPurchasedBy() {
-		return purchasedBy;
+	public int getCustomerID() {
+		return customerID;
 	}
 	
-	public void setPurchasedBy(Customer purchasedBy) {
-		this.purchasedBy = purchasedBy;
+	public void setCustomerID(int customerID) {
+		this.customerID = customerID;
 	}
 	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, itemName, itemDescription, highestOffer, owned, purchasedBy);
+		return Objects.hash(id, itemName, itemDescription, highestOffer, owned, customerID);
 	}
 	
 	@Override
@@ -81,12 +81,12 @@ public class ShopItem {
 		ShopItem other = (ShopItem) obj;
 		return id == other.id && Objects.equals(itemName, other.itemName) && Objects.equals(itemDescription, other.itemDescription)
 				&& highestOffer == other.highestOffer && Objects.equals(owned, other.owned)
-				&& Objects.equals(purchasedBy, other.purchasedBy);
+				&& Objects.equals(customerID, other.customerID);
 	}
 	
 	@Override
 	public String toString() {
 		return "ShopItem [id=" + id + ", itemName=" + itemName + ", itemDescription=" + itemDescription + ", highestOffer=" + highestOffer
-				+ ", owned=" + owned + ", purchasedBy=" + purchasedBy + "]";
+				+ ", owned=" + owned + ", customerID=" + customerID + "]";
 	}
 }

@@ -112,3 +112,13 @@
 22:28:39 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
 22:29:25 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
 22:29:59 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+22:53:15 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+23:02:39 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+23:21:00 [main] ERROR com.revature.views.LoginView - Login exception was thrown: com.revature.exceptions.LoginException
+23:21:07 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+23:30:24 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+23:56:52 [main] INFO  com.revature.views.LoginView - User [id=1, username=employee1, password=pw]
+23:57:30 [main] INFO  com.revature.views.LoginView - User [id=1, username=customer1, password=pw]
+00:00:55 [main] ERROR com.revature.views.LoginView - Login exception was thrown: com.revature.exceptions.LoginException
+00:01:00 [main] INFO  com.revature.views.LoginView - User [id=2, username=customer2, password=pw]
+00:02:05 [main] INFO  com.revature.views.LoginView - User [id=2, username=customer2, password=pw]

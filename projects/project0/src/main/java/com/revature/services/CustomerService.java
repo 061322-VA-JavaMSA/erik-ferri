@@ -11,13 +11,14 @@ import org.apache.logging.log4j.Logger;
 import com.revature.daos.ShopItemDAO;
 import com.revature.daos.ShopItemPostgres;
 import com.revature.models.ShopItem;
+import com.revature.models.Customer;
 
 public class CustomerService {
 
 	private ShopItemDAO sid = new ShopItemPostgres();
 
-	public boolean makeOffer(float offer, ShopItem si) {
+	public boolean makeOffer(float offer, ShopItem si, int customerID) {
 		
-		return sid.makeShopItemOffer(offer, si);
+		return sid.makeShopItemOffer(offer, si, customerID);
 	}
 }

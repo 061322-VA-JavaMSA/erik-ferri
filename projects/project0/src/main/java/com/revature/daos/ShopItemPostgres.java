@@ -116,7 +116,7 @@ public class ShopItemPostgres implements ShopItemDAO {
 				cu.setId(rs.getInt("purchased-by"));
 				cu.setUsername(rs.getString("username"));
 
-				si.setPurchasedBy(cu);
+				si.setCustomerID(cu.getId());
 
 				ShopItems.add(si);
 			}
@@ -128,15 +128,16 @@ public class ShopItemPostgres implements ShopItemDAO {
 	}
 
 	@Override
-	public boolean makeShopItemOffer(float offer, ShopItem si) {
-		String sql = "update shop_items set highest_offer = ? where id = ?;";
+	public boolean makeShopItemOffer(float offer, ShopItem si, int customerID) {
+		String sql = "update shop_items set highest_offer = ?, customer_id = ? where id = ?;";
 		int rowsChanged = -1;
 		
 		try(Connection c = ConnectionUtil.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			
 			ps.setFloat(1, offer);
-			ps.setInt(2, si.getId());
+			ps.setInt(2, customerID);
+			ps.setInt(3, si.getId());
 			
 			if(offer > si.getHighestOffer()) {
 				rowsChanged = ps.executeUpdate();

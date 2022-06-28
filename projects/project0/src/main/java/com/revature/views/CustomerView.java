@@ -3,6 +3,7 @@ package com.revature.views;
 import java.util.List;
 import java.util.Scanner;
 
+import com.revature.models.Customer;
 import com.revature.models.ShopItem;
 import com.revature.services.CustomerService;
 import com.revature.services.ShopItemService;
@@ -17,12 +18,12 @@ public class CustomerView {
 	ShopItemService sis = new ShopItemService();
 	ShopItemDAO sid = new ShopItemPostgres();
 
-	public void customerEntry(String username, String password) {
+	public void customerEntry(Customer cu) {
 		
 		Scanner scan = new Scanner(System.in);
 //		ShopItem si = new ShopItem();
 		
-		System.out.println("Welcome, " + username + "!");
+		System.out.println("Welcome, " + cu.getUsername() + "!");
 		displayItemList();
 		System.out.println("Which item would you like to make an offer on");
 		userInput = scan.nextLine();
@@ -38,7 +39,7 @@ public class CustomerView {
 		userInput = scan.nextLine();
 		float offer = Float.parseFloat(userInput);
 
-		boolean offerWentThrough = cs.makeOffer(offer, si);
+		boolean offerWentThrough = cs.makeOffer(offer, si, cu.getId());
 		if(offerWentThrough == true) {
 			System.out.println("We have received your offer!");
 		} else {
