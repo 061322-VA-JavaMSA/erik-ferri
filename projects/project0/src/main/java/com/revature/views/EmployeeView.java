@@ -49,7 +49,7 @@ public class EmployeeView {
 				sid.rejectShopItemOffer(itemId);
 			}
 			
-		} else if(userInput.equals("2")){
+		} else if(userInput.equals("2")) {
 			System.out.println("Enter the name of the item you wish to add:");
 			userInput = scan.nextLine();
 			ShopItem itemTBC = new ShopItem();
@@ -58,7 +58,7 @@ public class EmployeeView {
 			scan.close();
 			
 		} else if(userInput.equals("3")) {
-			System.out.println("Enter the name of the item you wish to remove:");
+			System.out.println("Enter the id of the item you wish to remove:");
 			userInput = scan.nextLine();
 			int itemId = Integer.parseInt(userInput);
 //			itemTBD.setItemName(userInput);
