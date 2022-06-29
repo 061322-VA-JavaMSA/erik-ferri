@@ -11,7 +11,7 @@ import java.util.List;
 import com.revature.models.Customer;
 import com.revature.util.ConnectionUtil;
 
-public class CustomerPostgres implements CustomerDAO{
+public class CustomerPostgres implements CustomerDAO {
 
 	@Override
 	public Customer createCustomer(Customer cu) {

@@ -1,6 +1,5 @@
 package com.revature.views;
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.revature.models.Customer;
@@ -27,8 +26,6 @@ public class CustomerView {
 	
 	public void customerPortal(Customer cu) {
 		
-		ShopItem si = new ShopItem();
-		
 		System.out.println("Please select an option:");
 		System.out.println("1: View items in shop");
 		System.out.println("2: Make an offer for an item");
@@ -36,45 +33,16 @@ public class CustomerView {
 		userInput = scan.nextLine();
 		
 		if(userInput.equals("1")) {
-			displayItemList();
+			sis.displayItemList();
 		} else if(userInput.equals("2")) {
 			offerView(cu);
 		} else if(userInput.equals("3")) {
-			displayCustomerItems(cu);
-//			System.out.println(cu.getId());
-		}
-	}
-	
-	public void displayItemList() {
-		List<ShopItem> shopItems = sis.getShopItems();
-		for(int i = 0; i < shopItems.size(); i++) {
-			if(!sis.getShopItems().get(i).getOwned().equals("yes")) {
-				System.out.println((i + 1) + ": " + sis.getShopItems().get(i).getItemName());
-			}
+			cs.displayCustomerItems(cu);
 		}
 	}
 
-	public void displayItemListWithOffers() {
-		List<ShopItem> shopItems = sis.getShopItems();
-		for(int i = 0; i < shopItems.size(); i++) {
-			float highestOffer = sis.getShopItems().get(i).getHighestOffer();
-			if(!sis.getShopItems().get(i).getOwned().equals("yes")) {
-				System.out.println((i + 1) + ": " + sis.getShopItems().get(i).getItemName() + " - " + highestOffer);
-			}
-		}
-	}
-
-	public void displayCustomerItems(Customer cu) {
-		List<ShopItem> shopItems = sid.retrieveShopItemsByUserId(cu.getId());
-		for(int i = 0; i < shopItems.size(); i++) {
-//			if(!sis.getShopItems().get(i).getOwned().equals("yes")) {
-				System.out.println((i + 1) + ": " + sid.retrieveShopItemsByUserId(cu.getId()).get(i).getItemName());
-//			}
-		}
-	}
-	
 	public void offerView(Customer cu) {
-		displayItemListWithOffers();
+		sis.displayItemListWithOffers();
 		System.out.println("Which item would you like to make an offer on");
 		userInput = scan.nextLine();
 		

@@ -1,6 +1,5 @@
 package com.revature.views;
 
-import java.util.List;
 import java.util.Scanner;
 
 import com.revature.models.ShopItem;
@@ -34,7 +33,7 @@ public class EmployeeView {
 		
 		if(userInput.equals("1")) {
 			System.out.println("Enter the number of the item whose offer you'd like accept/reject:");
-			displayItemList();
+			sis.displayItemListWithOffers();
 			userInput = scan.nextLine();
 			System.out.println("Would you like to accept or reject this offer?");
 			System.out.println("1: Accept");
@@ -61,7 +60,6 @@ public class EmployeeView {
 			System.out.println("Enter the id of the item you wish to remove:");
 			userInput = scan.nextLine();
 			int itemId = Integer.parseInt(userInput);
-//			itemTBD.setItemName(userInput);
 			sid.deleteShopItemById(itemId);
 			scan.close();
 		} else {
@@ -69,16 +67,6 @@ public class EmployeeView {
 //			Recursive
 			employeePortal();
 			
-		}
-	}
-	
-	public void displayItemList() {
-		List<ShopItem> shopItems = sis.getShopItems();
-		for(int i = 0; i < shopItems.size(); i++) {
-			float highestOffer = sis.getShopItems().get(i).getHighestOffer();
-			if(!sis.getShopItems().get(i).getOwned().equals("yes")) {
-				System.out.println((i + 1) + ": " + sis.getShopItems().get(i).getItemName() + " - " + highestOffer);
-			}
 		}
 	}
 }

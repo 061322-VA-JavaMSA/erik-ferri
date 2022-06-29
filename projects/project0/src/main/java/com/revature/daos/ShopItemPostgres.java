@@ -54,7 +54,7 @@ public class ShopItemPostgres implements ShopItemDAO {
 				// extract each field from rs for each record, map them to a ShopItem object and
 				// add them to the shopItems arraylist
 				ShopItem si = new ShopItem();
-//				si.setId(rs.getInt("id"));
+				si.setId(rs.getInt("id"));
 				si.setItemName(rs.getString("item_name"));
 				si.setHighestOffer(rs.getFloat("highest_offer"));
 				si.setOwned(rs.getString("item_owned"));
