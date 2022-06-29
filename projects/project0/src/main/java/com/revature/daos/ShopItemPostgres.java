@@ -3,7 +3,7 @@ package com.revature.daos;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
+//import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -13,7 +13,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.revature.models.ShopItem;
 import com.revature.models.Customer;
-import com.revature.services.ShopItemService;
+//import com.revature.services.ShopItemService;
 import com.revature.util.ConnectionUtil;
 
 public class ShopItemPostgres implements ShopItemDAO {
@@ -87,6 +87,9 @@ public class ShopItemPostgres implements ShopItemDAO {
 				si.setId(rs.getInt("id"));
 				si.setItemName(rs.getString("item_name"));
 				si.setHighestOffer(rs.getFloat("highest_offer"));
+				si.setOwned(rs.getString("item_owned"));
+				si.setCustomerID(rs.getInt("customer_id"));
+				si.setAmtOwed(rs.getFloat("amt_owed"));
 			}
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
@@ -155,15 +158,16 @@ public class ShopItemPostgres implements ShopItemDAO {
 		return true;
 	}
 	
-	public boolean acceptShopItemOffer(int id) {
-		String sql = "update shop_items set item_owned = ? where id = ?;";
+	public boolean acceptShopItemOffer(ShopItem si) {
+		String sql = "update shop_items set item_owned = ?, amt_owed = ? where id = ?;";
 		int rowsChanged = -1;
 		
 		try(Connection c = ConnectionUtil.getConnectionFromFile()){
 			PreparedStatement ps = c.prepareStatement(sql);
 			
-			ps.setString(1, "yes"); 
-			ps.setInt(2, id);
+			ps.setString(1, "yes");
+			ps.setFloat(2, si.getHighestOffer());
+			ps.setInt(3, si.getId());
 			
 			rowsChanged = ps.executeUpdate();
 			

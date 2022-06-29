@@ -43,7 +43,8 @@ public class EmployeeView {
 			userInput = scan.nextLine();
 			
 			if(userInput.equals("1")) {
-				sid.acceptShopItemOffer(itemId);
+				ShopItem si = sid.retrieveShopItemById(itemId);
+				sid.acceptShopItemOffer(si);
 			} else if(userInput.equals("2")) {
 				sid.rejectShopItemOffer(itemId);
 			}

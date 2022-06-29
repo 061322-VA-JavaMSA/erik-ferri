@@ -19,9 +19,7 @@ public class CustomerService {
 		List<ShopItem> shopItems = sid.retrieveShopItemsByUserId(cu.getId());
 		for(int i = 0; i < shopItems.size(); i++) {
 			int itemId = sis.getShopItems().get(i).getId();
-//			if(!sis.getShopItems().get(i).getOwned().equals("yes")) {
 				System.out.println(itemId + ": " + sid.retrieveShopItemsByUserId(cu.getId()).get(i).getItemName());
-//			}
 		}
 	}
 

@@ -7,10 +7,10 @@ public class ShopItem {
 
 	private int id;
 	private String itemName;
-	private String itemDescription;
 	private float highestOffer;
 	private String owned;
 	private int customerID;
+	private float amtOwed;
 	
 	public ShopItem() {
 		super();
@@ -33,14 +33,6 @@ public class ShopItem {
 		this.itemName = itemName;
 	}
 	
-	public String getItemDescription() {
-		return itemDescription;
-	}
-	
-	public void setItemDescription(String itemDescription) {
-		this.itemDescription = itemDescription;
-	}
-
 	public float getHighestOffer() {
 		return highestOffer;
 	}
@@ -65,9 +57,17 @@ public class ShopItem {
 		this.customerID = customerID;
 	}
 	
+	public float getAmtOwed() {
+		return amtOwed;
+	}
+	
+	public void setAmtOwed(float amtOwed) {
+		this.amtOwed = amtOwed;
+	}
+	
 	@Override
 	public int hashCode() {
-		return Objects.hash(id, itemName, itemDescription, highestOffer, owned, customerID);
+		return Objects.hash(id, itemName, highestOffer, owned, customerID, amtOwed);
 	}
 	
 	@Override
@@ -79,14 +79,14 @@ public class ShopItem {
 		if (getClass() != obj.getClass())
 			return false;
 		ShopItem other = (ShopItem) obj;
-		return id == other.id && Objects.equals(itemName, other.itemName) && Objects.equals(itemDescription, other.itemDescription)
+		return id == other.id && Objects.equals(itemName, other.itemName)
 				&& highestOffer == other.highestOffer && Objects.equals(owned, other.owned)
-				&& Objects.equals(customerID, other.customerID);
+				&& Objects.equals(customerID, other.customerID) && amtOwed == other.amtOwed;
 	}
 	
 	@Override
 	public String toString() {
-		return "ShopItem [id=" + id + ", itemName=" + itemName + ", itemDescription=" + itemDescription + ", highestOffer=" + highestOffer
-				+ ", owned=" + owned + ", customerID=" + customerID + "]";
+		return "ShopItem [id=" + id + ", itemName=" + itemName + ", highestOffer=" + highestOffer
+				+ ", owned=" + owned + ", customerID=" + amtOwed + ", amtOwed=" + "]";
 	}
 }
