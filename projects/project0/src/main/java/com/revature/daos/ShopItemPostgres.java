@@ -97,7 +97,7 @@ public class ShopItemPostgres implements ShopItemDAO {
 
 	@Override
 	public List<ShopItem> retrieveShopItemsByUserId(int id) {
-		String sql = "select si.id, si.item_name, si.item_description, si.item_highest_offer, si.item-owned, si.purchased_by , u.username from ShopItems si join users u on si.user_assigned_id = u.id where user_assigned_id = ?;";
+		String sql = "select si.id, si.item_name, si.highest_offer, si.item_owned, si.customer_id, cu.username from shop_items si join customers cu on si.customer_id = cu.id where customer_id = ?;";
 		List<ShopItem> ShopItems = new ArrayList<>();
 
 		try (Connection c = ConnectionUtil.getConnectionFromFile()) {
@@ -109,13 +109,12 @@ public class ShopItemPostgres implements ShopItemDAO {
 			while (rs.next()) {
 				ShopItem si = new ShopItem();  
 				si.setId(rs.getInt("id"));
-				si.setItemName(rs.getString("item-name"));
-				si.setItemDescription(rs.getString("item-description"));
-				si.setHighestOffer(rs.getFloat("item-highest-offer"));
-				si.setOwned(rs.getString("item-owned"));
+				si.setItemName(rs.getString("item_name"));
+				si.setHighestOffer(rs.getFloat("highest_offer"));
+				si.setOwned(rs.getString("item_owned"));
 
 				Customer cu = new Customer();
-				cu.setId(rs.getInt("purchased-by"));
+				cu.setId(rs.getInt("customer_id"));
 				cu.setUsername(rs.getString("username"));
 
 				si.setCustomerID(cu.getId());

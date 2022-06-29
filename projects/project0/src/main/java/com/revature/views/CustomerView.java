@@ -17,14 +17,64 @@ public class CustomerView {
 	ShopItem si = new ShopItem();
 	ShopItemService sis = new ShopItemService();
 	ShopItemDAO sid = new ShopItemPostgres();
+	Scanner scan = new Scanner(System.in);
 
 	public void customerEntry(Customer cu) {
 		
-		Scanner scan = new Scanner(System.in);
-//		ShopItem si = new ShopItem();
-		
 		System.out.println("Welcome, " + cu.getUsername() + "!");
-		displayItemList();
+		customerPortal(cu);
+	}
+	
+	public void customerPortal(Customer cu) {
+		
+		ShopItem si = new ShopItem();
+		
+		System.out.println("Please select an option:");
+		System.out.println("1: View items in shop");
+		System.out.println("2: Make an offer for an item");
+		System.out.println("3: View your items");
+		userInput = scan.nextLine();
+		
+		if(userInput.equals("1")) {
+			displayItemList();
+		} else if(userInput.equals("2")) {
+			offerView(cu);
+		} else if(userInput.equals("3")) {
+			displayCustomerItems(cu);
+//			System.out.println(cu.getId());
+		}
+	}
+	
+	public void displayItemList() {
+		List<ShopItem> shopItems = sis.getShopItems();
+		for(int i = 0; i < shopItems.size(); i++) {
+			if(!sis.getShopItems().get(i).getOwned().equals("yes")) {
+				System.out.println((i + 1) + ": " + sis.getShopItems().get(i).getItemName());
+			}
+		}
+	}
+
+	public void displayItemListWithOffers() {
+		List<ShopItem> shopItems = sis.getShopItems();
+		for(int i = 0; i < shopItems.size(); i++) {
+			float highestOffer = sis.getShopItems().get(i).getHighestOffer();
+			if(!sis.getShopItems().get(i).getOwned().equals("yes")) {
+				System.out.println((i + 1) + ": " + sis.getShopItems().get(i).getItemName() + " - " + highestOffer);
+			}
+		}
+	}
+
+	public void displayCustomerItems(Customer cu) {
+		List<ShopItem> shopItems = sid.retrieveShopItemsByUserId(cu.getId());
+		for(int i = 0; i < shopItems.size(); i++) {
+//			if(!sis.getShopItems().get(i).getOwned().equals("yes")) {
+				System.out.println((i + 1) + ": " + sid.retrieveShopItemsByUserId(cu.getId()).get(i).getItemName());
+//			}
+		}
+	}
+	
+	public void offerView(Customer cu) {
+		displayItemListWithOffers();
 		System.out.println("Which item would you like to make an offer on");
 		userInput = scan.nextLine();
 		
@@ -46,14 +96,16 @@ public class CustomerView {
 			System.out.println("Sorry, a higher offer has already been made on that item.");
 		}
 		
+		System.out.println("Would you like to make another offer?");
+		System.out.println("1: Yes");
+		System.out.println("2: No");
+		userInput = scan.nextLine();
 		
-		
-	}
-	
-	public void displayItemList() {
-		List<ShopItem> shopItems = sis.getShopItems();
-		for(int i = 0; i < shopItems.size(); i++) {
-			System.out.println(sis.getShopItems().get(i).getItemName());
+		if(userInput.equals("1")) {
+//			Recursive
+			offerView(cu);
+		} else if(userInput.equals("2")) {
+			scan.close();
 		}
 	}
 }
