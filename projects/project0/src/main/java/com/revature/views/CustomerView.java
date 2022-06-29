@@ -38,6 +38,13 @@ public class CustomerView {
 			offerView(cu);
 		} else if(userInput.equals("3")) {
 			cs.displayCustomerItems(cu);
+			
+			System.out.println("Which item would you like to view payments for?");
+			userInput = scan.nextLine();
+			
+			 ShopItem si = sid.retrieveShopItemById(Integer.parseInt(userInput));
+			 float weeklyPayment = (si.getAmtOwed() / 4);
+			 System.out.println("You owe 4 weekly payments of " + weeklyPayment);
 		}
 	}
 

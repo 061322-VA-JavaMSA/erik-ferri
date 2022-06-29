@@ -26,4 +26,5 @@ public class CustomerService {
 	public boolean makeOffer(float offer, ShopItem si, int customerID) {
 		return sid.makeShopItemOffer(offer, si, customerID);
 	}
+	
 }
