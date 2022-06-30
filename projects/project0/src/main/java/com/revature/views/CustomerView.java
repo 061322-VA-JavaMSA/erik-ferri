@@ -53,6 +53,7 @@ public class CustomerView {
 			 float weeklyPayment = (si.getAmtOwed() / 4);
 			 System.out.println("====================================================");
 			 System.out.println("You owe 4 weekly payments of $" + weeklyPayment + " for the " + si.getItemName());
+			 System.out.println("====================================================");
 			 System.out.println("");
 			 customerPortal(cu);
 		} else if(userInput.equals("4")) {
@@ -89,8 +90,11 @@ public class CustomerView {
 			if(offerWentThrough == true) {
 				System.out.println("=====================================");
 				System.out.println("We have received your offer!");
+				System.out.println("=====================================");
 			} else {
+				System.out.println("=====================================");
 				System.out.println("Sorry, a higher offer has already been made on that item.");
+				System.out.println("=====================================");
 			}
 		} catch (MakeNegativeOfferException e) {
 			// TODO Auto-generated catch block
