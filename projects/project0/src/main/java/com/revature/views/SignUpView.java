@@ -34,6 +34,8 @@ public class SignUpView {
 			cp.createCustomer(customerTBC);
 			cv.customerEntry(customerTBC);	
 		} else if (userInput.equals("2")) {
+			System.out.println("===================================");
+			System.out.println("ENTER THE SECRET EMPLOYEE PASSWORD:");
 			employeeSignUp();
 		} else {
 			System.out.println("Invalid entry. Please try again.");
@@ -48,9 +50,6 @@ public class SignUpView {
 		EmployeePostgres ep = new EmployeePostgres();
 		EmployeeView ev = new EmployeeView();
 		FrontDoorView fdv = new FrontDoorView();
-		
-		System.out.println("===================================");
-		System.out.println("ENTER THE SECRET EMPLOYEE PASSWORD:");
 		userInput = scan.nextLine();
 		if(userInput.equals("R0CKON!123")) {
 			System.out.println("======================");
@@ -65,12 +64,9 @@ public class SignUpView {
 			ev.employeeEntry(employeeTBC);
 			
 		} else {
-			System.out.println("==================================================================");
-			System.out.println("Wrong password. Try again, or input 1 to go back to the main menu.");
-			userInput = scan.nextLine();
-			if (userInput.equals("1")) {
-				fdv.welcome();
-			}
+			System.out.println("==========================");
+			System.out.println("Wrong password. Try again.");
+			employeeSignUp();
 		}
 	}
 }

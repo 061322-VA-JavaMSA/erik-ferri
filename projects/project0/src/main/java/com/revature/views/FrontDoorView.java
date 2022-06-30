@@ -27,6 +27,19 @@ public class FrontDoorView {
 		} else if(userInput.equals("3")) {
 			System.out.println("=================================");
 			System.out.println("Goodbye, we hope to see you soon!");
+			System.out.println("");
+			System.out.println("     ;;;;;;;;;;;;;;;;;;;");
+			System.out.println("     ;;;;;;;;;;;;;;;;;;;");
+			System.out.println("     ;                 ;");
+			System.out.println("     ;                 ;");
+			System.out.println("     ;                 ;");
+			System.out.println("     ;                 ;");
+			System.out.println("     ;                 ;");
+			System.out.println("     ;                 ;");
+			System.out.println("     ;                 ;");
+			System.out.println(",;;;;;            ,;;;;;");
+			System.out.println(";;;;;;            ;;;;;;");
+			System.out.println("`;;;;'            `;;;;'");
 			scan.close();
 		} else {
 			System.out.println("Invalid entry. Try again.");
