@@ -9,7 +9,7 @@ import com.revature.exceptions.LoginException;
 import com.revature.services.AuthService;
 import com.revature.services.UserService;
 import com.revature.models.Customer;
-//import com.revature.models.Employee;
+import com.revature.models.Employee;
 import com.revature.daos.CustomerDAO;
 import com.revature.daos.CustomerPostgres;
 
@@ -29,7 +29,7 @@ public class LoginView {
 		cv = new CustomerView();
 		ev = new EmployeeView();
 		Customer cu = new Customer();
-//		Employee em = new Employee();
+		Employee em = new Employee();
 		CustomerDAO cud = new CustomerPostgres();
 		
 		String username = null;
@@ -50,7 +50,9 @@ public class LoginView {
 				cv.customerEntry(cu);
 			} else {
 //				Otherwise, take them to the employee view
-				ev.employeeEntry(username,password);
+				em.setUsername(username);
+				em.setPassword(password);
+				ev.employeeEntry(em);
 			}
 		} catch (LoginException e) {
 			System.out.println("Invalid credentials. Try again.");

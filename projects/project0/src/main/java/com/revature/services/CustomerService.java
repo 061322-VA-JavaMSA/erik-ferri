@@ -17,9 +17,12 @@ public class CustomerService {
 	
 	public void displayCustomerItems(Customer cu) {
 		List<ShopItem> shopItems = sid.retrieveShopItemsByUserId(cu.getId());
+		System.out.println("============================================");
+		System.out.println("YOUR ITEMS");
+		System.out.println("============================================");
 		for(int i = 0; i < shopItems.size(); i++) {
-			int itemId = sis.getShopItems().get(i).getId();
-				System.out.println(itemId + ": " + sid.retrieveShopItemsByUserId(cu.getId()).get(i).getItemName());
+			int itemId = shopItems.get(i).getId();
+				System.out.println(itemId + ": " + shopItems.get(i).getItemName());
 		}
 	}
 

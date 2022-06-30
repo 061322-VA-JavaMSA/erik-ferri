@@ -12,12 +12,12 @@ public class SignUpView {
 	static String userInput;
 
 	public static void signUp() {
-		Scanner scan = new Scanner(System.in);
 		Customer customerTBC = new Customer();
 		CustomerPostgres cp = new CustomerPostgres();
-		Employee employeeTBC = new Employee();
-		EmployeePostgres ep = new EmployeePostgres();
+		CustomerView cv = new CustomerView();
+		Scanner scan = new Scanner(System.in);
 
+		System.out.println("==================================");
 		System.out.println("Are you a customer or an employee?");
 		System.out.println("1: Customer");
 		System.out.println("2: Employee");
@@ -32,8 +32,28 @@ public class SignUpView {
 			userInput = scan.nextLine();
 			customerTBC.setPassword(userInput);
 			cp.createCustomer(customerTBC);
-			scan.close();	
+			cv.customerEntry(customerTBC);	
 		} else if (userInput.equals("2")) {
+			employeeSignUp();
+		} else {
+			System.out.println("Invalid entry. Please try again.");
+//			Recursive
+			signUp();
+		}
+	}
+
+	public static void employeeSignUp() {
+		Scanner scan = new Scanner(System.in);
+		Employee employeeTBC = new Employee();
+		EmployeePostgres ep = new EmployeePostgres();
+		EmployeeView ev = new EmployeeView();
+		FrontDoorView fdv = new FrontDoorView();
+		
+		System.out.println("===================================");
+		System.out.println("ENTER THE SECRET EMPLOYEE PASSWORD:");
+		userInput = scan.nextLine();
+		if(userInput.equals("R0CKON!123")) {
+			System.out.println("======================");
 			System.out.println("What is your username?");
 			userInput = scan.nextLine();
 			employeeTBC.setUsername(userInput);
@@ -42,11 +62,15 @@ public class SignUpView {
 			userInput = scan.nextLine();
 			employeeTBC.setPassword(userInput);
 			ep.createEmployee(employeeTBC);
-			scan.close();	
+			ev.employeeEntry(employeeTBC);
+			
 		} else {
-			System.out.println("Invalid entry. Please try again.");
-//			Recursive
-			signUp();
-		}	
+			System.out.println("==================================================================");
+			System.out.println("Wrong password. Try again, or input 1 to go back to the main menu.");
+			userInput = scan.nextLine();
+			if (userInput.equals("1")) {
+				fdv.welcome();
+			}
+		}
 	}
 }

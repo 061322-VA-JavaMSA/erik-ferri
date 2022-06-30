@@ -6,7 +6,7 @@ public class FrontDoorView {
 
 	static String userInput;
 
-	public static void welcome() {
+	public void welcome() {
 		Scanner scan = new Scanner(System.in);
 		System.out.println("                                                                 ,_ _                                          ");
 		System.out.println(" (|  |  |_/_ |\\  _   _           _    _|_  _     _|_ |)    _    /| | |         ,  o  _      ()_|_  _   ,_   _ |");
@@ -25,6 +25,7 @@ public class FrontDoorView {
 		} else if(userInput.equals("2")) {
 			SignUpView.signUp();
 		} else if(userInput.equals("3")) {
+			System.out.println("=================================");
 			System.out.println("Goodbye, we hope to see you soon!");
 			scan.close();
 		} else {

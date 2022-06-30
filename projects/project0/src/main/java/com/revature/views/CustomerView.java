@@ -20,7 +20,9 @@ public class CustomerView {
 
 	public void customerEntry(Customer cu) {
 		
+		System.out.println("============================");
 		System.out.println("Welcome, " + cu.getUsername() + "!");
+		System.out.println("");
 		customerPortal(cu);
 	}
 	
@@ -30,35 +32,51 @@ public class CustomerView {
 		System.out.println("1: View items in shop");
 		System.out.println("2: Make an offer for an item");
 		System.out.println("3: View your items");
+		System.out.println("4: Log out");
 		userInput = scan.nextLine();
 		
 		if(userInput.equals("1")) {
 			sis.displayItemList();
+			System.out.println("");
+			customerPortal(cu);
 		} else if(userInput.equals("2")) {
 			offerView(cu);
 		} else if(userInput.equals("3")) {
 			cs.displayCustomerItems(cu);
 			
+			System.out.println("");
 			System.out.println("Which item would you like to view payments for?");
 			userInput = scan.nextLine();
 			
 			 ShopItem si = sid.retrieveShopItemById(Integer.parseInt(userInput));
 			 float weeklyPayment = (si.getAmtOwed() / 4);
-			 System.out.println("You owe 4 weekly payments of " + weeklyPayment);
+			 System.out.println("====================================================");
+			 System.out.println("You owe 4 weekly payments of $" + weeklyPayment + " for the " + si.getItemName());
+			 System.out.println("");
+			 customerPortal(cu);
+		} else if(userInput.equals("4")) {
+			FrontDoorView fdv = new FrontDoorView();
+			fdv.welcome();
+		} else {
+			System.out.println("Invalid entry. Try again.");
+//			Recursive
+			customerPortal(cu);
 		}
 	}
 
 	public void offerView(Customer cu) {
 		sis.displayItemListWithOffers();
-		System.out.println("Which item would you like to make an offer on");
+		System.out.println("");
+		System.out.println("Enter the number of the item you'd like to make an offer on:");
 		userInput = scan.nextLine();
 		
 //		idTBR = id to be retrieved
 		int idTBR = Integer.parseInt(userInput);
 		si = sid.retrieveShopItemById(idTBR);
 		
-		float standingOffer = si.getHighestOffer();		
-		System.out.println("Standing Offer: " + standingOffer);
+		float standingOffer = si.getHighestOffer();
+		System.out.println("======================");
+		System.out.println("Standing Offer: $" + standingOffer);
 		
 		System.out.println("Make an offer");
 		userInput = scan.nextLine();
@@ -66,6 +84,7 @@ public class CustomerView {
 
 		boolean offerWentThrough = cs.makeOffer(offer, si, cu.getId());
 		if(offerWentThrough == true) {
+			System.out.println("=====================================");
 			System.out.println("We have received your offer!");
 		} else {
 			System.out.println("Sorry, a higher offer has already been made on that item.");
@@ -80,7 +99,8 @@ public class CustomerView {
 //			Recursive
 			offerView(cu);
 		} else if(userInput.equals("2")) {
-			scan.close();
+			System.out.println("============================");
+			customerPortal(cu);
 		}
 	}
 }

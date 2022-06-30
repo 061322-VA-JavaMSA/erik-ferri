@@ -16,21 +16,27 @@ public class ShopItemService {
 	
 	public void displayItemList() {
 		List<ShopItem> shopItems = getShopItems();
+		System.out.println("============================================");
+		System.out.println("SHOP ITEMS");
+		System.out.println("============================================");
 		for(int i = 0; i < shopItems.size(); i++) {
-			int itemId = getShopItems().get(i).getId();
-			if(!getShopItems().get(i).getOwned().equals("yes")) {
-				System.out.println(itemId + ": " + getShopItems().get(i).getItemName());
+			int itemId = shopItems.get(i).getId();
+			if(!shopItems.get(i).getOwned().equals("yes")) {
+				System.out.println(itemId + ": " + shopItems.get(i).getItemName());
 			}
 		}
 	}
 	
 	public void displayItemListWithOffers() {
 		List<ShopItem> shopItems = getShopItems();
+		System.out.println("=======================================================");
+		System.out.println("SHOP ITEMS - HIGHEST OFFER LISTED TO RIGHT OF EACH ITEM");
+		System.out.println("=======================================================");
 		for(int i = 0; i < shopItems.size(); i++) {
-			float highestOffer = getShopItems().get(i).getHighestOffer();
-			int itemId = getShopItems().get(i).getId();
-			if(!getShopItems().get(i).getOwned().equals("yes")) {
-				System.out.println(itemId + ": " + getShopItems().get(i).getItemName() + " - " + highestOffer);
+			float highestOffer = shopItems.get(i).getHighestOffer();
+			int itemId = shopItems.get(i).getId();
+			if(!shopItems.get(i).getOwned().equals("yes")) {
+				System.out.println(itemId + ": " + shopItems.get(i).getItemName() + " - $" + highestOffer);
 			}
 		}
 	}
