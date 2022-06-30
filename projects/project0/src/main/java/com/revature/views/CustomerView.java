@@ -8,6 +8,7 @@ import com.revature.services.CustomerService;
 import com.revature.services.ShopItemService;
 import com.revature.daos.ShopItemDAO;
 import com.revature.daos.ShopItemPostgres;
+import com.revature.exceptions.MakeNegativeOfferException;
 
 public class CustomerView {
 	
@@ -82,12 +83,18 @@ public class CustomerView {
 		userInput = scan.nextLine();
 		float offer = Float.parseFloat(userInput);
 
-		boolean offerWentThrough = cs.makeOffer(offer, si, cu.getId());
-		if(offerWentThrough == true) {
-			System.out.println("=====================================");
-			System.out.println("We have received your offer!");
-		} else {
-			System.out.println("Sorry, a higher offer has already been made on that item.");
+		boolean offerWentThrough;
+		try {
+			offerWentThrough = cs.makeOffer(offer, si, cu.getId());
+			if(offerWentThrough == true) {
+				System.out.println("=====================================");
+				System.out.println("We have received your offer!");
+			} else {
+				System.out.println("Sorry, a higher offer has already been made on that item.");
+			}
+		} catch (MakeNegativeOfferException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
 		
 		System.out.println("Would you like to make another offer?");

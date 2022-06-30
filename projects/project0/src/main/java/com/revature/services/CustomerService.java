@@ -7,6 +7,7 @@ import org.apache.logging.log4j.Logger;
 
 import com.revature.daos.ShopItemDAO;
 import com.revature.daos.ShopItemPostgres;
+import com.revature.exceptions.MakeNegativeOfferException;
 import com.revature.models.Customer;
 import com.revature.models.ShopItem;
 
@@ -26,7 +27,10 @@ public class CustomerService {
 		}
 	}
 
-	public boolean makeOffer(float offer, ShopItem si, int customerID) {
+	public boolean makeOffer(float offer, ShopItem si, int customerID) throws MakeNegativeOfferException{
+		if(offer <= 0) {
+			throw new MakeNegativeOfferException("You must make an offer higher than 0.");
+		}
 		return sid.makeShopItemOffer(offer, si, customerID);
 	}
 	

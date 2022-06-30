@@ -355,3 +355,8 @@
 08:22:16 [main] INFO  com.revature.views.LoginView - User [id=1, username=eferri, password=letsrocktoday]
 08:22:43 [main] INFO  com.revature.views.LoginView - User [id=1, username=eferri, password=letsrocktoday]
 08:23:00 [main] INFO  com.revature.views.LoginView - User [id=1, username=kevin, password=rockinout]
+08:55:13 [main] INFO  com.revature.views.LoginView - User [id=1, username=eferri, password=letsrocktoday]
+08:55:52 [main] INFO  com.revature.views.LoginView - User [id=1, username=ariel, password=rockinout]
+09:27:52 [main] ERROR com.revature.views.LoginView - Login exception was thrown: com.revature.exceptions.LoginException
+09:29:29 [main] INFO  com.revature.views.LoginView - User [id=1, username=eferri, password=letsrocktoday]
+09:30:03 [main] INFO  com.revature.views.LoginView - User [id=1, username=kevin, password=rockinout]
