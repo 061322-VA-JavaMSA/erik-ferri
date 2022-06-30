@@ -36,6 +36,6 @@ public class PositiveNumberTest {
 	public void MakeNegativeOffer() {
 		ShopItem si = new ShopItem();
 		assertThrows(MakeNegativeOfferException.class, () -> cs.makeOffer(-1, si, 1));
-		System.out.println("Divide by zero exception was thrown when dividing 7 by 0");
+		System.out.println("MakeNegativeOfferException was thrown when trying to make an offer of $-1");
 	}
 }
