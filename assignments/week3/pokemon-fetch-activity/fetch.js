@@ -36,6 +36,6 @@ async function getData() {
 function populateData(response) {
     console.log(response);
     var pokemon = document.createElement('tr');
-    pokemon.innerHTML = "<td>" + response.id + "</td><td>" + response.name.charAt(0).toUpperCase() + response.name.slice(1) + "</td><td><img src=" + response.sprites.front_default + "></td>" + "</td><td><img src=" + response.sprites.front_shiny + "></td>";
+    pokemon.innerHTML = `<td>${response.id}</td><td>${response.name.charAt(0).toUpperCase() + response.name.slice(1)}</td><td><img src=${response.sprites.front_default}></td></td><td><img src=${response.sprites.front_shiny} ></td>`;
     document.getElementById('pokemon-table').appendChild(pokemon);
 }
