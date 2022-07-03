@@ -18,10 +18,10 @@ let baseApiURL = 'https://pokeapi.co/api/v2/pokemon';
 
 async function getData() {
     console.log('Button was clicked!');
-    let id = document.getElementById('data-input').value;
-    console.log(`id = ${id}`);
+    let name = document.getElementById('data-input').value.toLowerCase();
+    console.log(`name = ${name}`);
 
-    let httpResponse = await fetch(`${baseApiURL}/${id}`);
+    let httpResponse = await fetch(`${baseApiURL}/${name}`);
 
     if(httpResponse.status >= 200 && httpResponse.status < 300){
     let data = await httpResponse.json();
