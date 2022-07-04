@@ -1,7 +1,4 @@
 body {
-    /* font-family: 'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif; */
-    color: #888888;
-    /* background-color: #EECC99; */
     background-image: url("../images/background.jpg");
 }
 
@@ -16,28 +13,6 @@ main {
     src: url(Pokemon-Hollow.ttf);
 }
 
-button:hover {
-    background-color: #EEAA66;
-}
-
-button:active {
-    border: 2px solid #888888;
-}
-
-main>* {
-    margin: 8px;
-}
-
-th {
-    color: #555555;
-}
-
-th, td {
-    border-bottom: 2px solid rgb(191,30,46);
-    border-right: 2px solid rgb(191,30,46);
-    width: 96px;
-}
-
 header {
     border-bottom: 2px solid black;
     font-size: 48px;
@@ -45,6 +20,17 @@ header {
     color: #3664AD;
     background-color: #FFCB05;
     font-weight: bold;
+}
+
+.data {
+    border-bottom: 2px solid rgb(191,30,46);
+    border-right: 2px solid rgb(191,30,46);
+}
+
+th, td {
+    border-bottom: 2px solid rgb(191,30,46);
+    border-right: 2px solid rgb(191,30,46);
+    width: 96px;
 }
 
 #get-data {
