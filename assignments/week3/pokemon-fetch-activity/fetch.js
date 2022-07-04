@@ -68,8 +68,8 @@ function populateData(response) {
     console.log(response);
     var pokemon = document.createElement('tr');
     pokemon.innerHTML = `<th scope="row">${response.id}</th>`
-    pokemon.innerHTML += `<td>${response.name.charAt(0).toUpperCase() + response.name.slice(1)}</td>`;
-    pokemon.innerHTML += `<td><img src=${response.sprites.front_default}></td>`;
-    pokemon.innerHTML += `<td><img src=${response.sprites.front_shiny} ></td>`;
+    pokemon.innerHTML += `<td class="text-center">${response.name.charAt(0).toUpperCase() + response.name.slice(1)}</td>`;
+    pokemon.innerHTML += `<td class="text-center"><img src=${response.sprites.front_default}></td>`;
+    pokemon.innerHTML += `<td class="text-center"><img src=${response.sprites.front_shiny} ></td>`;
     document.getElementById('table-body').appendChild(pokemon);
 }
