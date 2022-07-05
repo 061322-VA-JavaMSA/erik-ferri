@@ -4,11 +4,12 @@
 	xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd"
 	version="2.5">
 	<servlet>
-		<servlet-name>hello-world</servlet-name>
-		<servlet-class>com.revature.web.HelloWorld</servlet-class>
+		<servlet-name>project1</servlet-name>
+		<servlet-class>com.revature.web.HelloServlet</servlet-class>
+		<load-on-startup>0</load-on-startup>
 	</servlet>
 	<servlet-mapping>
-		<servlet-name>hello-world</servlet-name>
-		<url-pattern>hello</url-pattern>
+		<servlet-name>project1</servlet-name>
+		<url-pattern>/hello</url-pattern>
 	</servlet-mapping>
 </web-app>
