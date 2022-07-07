@@ -80,10 +80,12 @@ public class UserDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDTO other = (UserDTO) obj;
-		return id == other.id && role == other.role && Objects.equals(username, other.username);
+		return id == other.id && role == other.role && Objects.equals(username, other.username) 
+		&& Objects.equals(userFirstName, other.userFirstName) && Objects.equals(userLastName, other.userLastName) 
+		&& Objects.equals(userEmail, other.userEmail);
 	}
 	@Override
 	public String toString() {
-		return "UserDTO [id=" + id + ", username=" + username + ", role=" + role + "]";
+		return "UserDTO [id=" + id + ", username=" + username + ", user_first_name=" + userFirstName + ", user_last_name=" + userLastName + ", user_email=" + userEmail + ", role=" + role + "]";
 	}
 }
