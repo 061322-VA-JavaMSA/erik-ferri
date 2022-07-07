@@ -12,15 +12,21 @@ import jakarta.persistence.Id;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="users")
+@Table(name="ers_users")
 public class User {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
 	private int id;
-	@Column(name="username", nullable = false, unique = true)
+	@Column(name="ers_username", nullable = false, unique = true)
 	private String username;
-	@Column( nullable = false)
+	@Column(name="ers_password", nullable = false)
 	private String password;
+	@Column(name="user_first_name", nullable = false)
+	private String userFirstName;
+	@Column(name="user_last_name", nullable = false)
+	private String userLastName;
+	@Column(name="user_email", nullable = false)
+	private String userEmail;
 	@Enumerated(EnumType.STRING)
 	private Role role;
 	
@@ -52,6 +58,30 @@ public class User {
 	public void setPassword(String password) {
 		this.password = password;
 	}
+	
+	public String getUserFirstName() {
+		return userFirstName;
+	}
+
+	public void setUserFirstName(String userFirstName) {
+		this.userFirstName = userFirstName;
+	}
+	
+	public String getUserLastName() {
+		return userLastName;
+	}
+
+	public void setUserLastName(String userLastName) {
+		this.userLastName = userLastName;
+	}
+	
+	public String getUserEmail() {
+		return userEmail;
+	}
+
+	public void setUserEmail(String userEmail) {
+		this.userEmail = userEmail;
+	}
 
 	public Role getRole() {
 		return role;
@@ -76,12 +106,13 @@ public class User {
 			return false;
 		User other = (User) obj;
 		return id == other.id && Objects.equals(password, other.password) && role == other.role
-				&& Objects.equals(username, other.username);
+				&& Objects.equals(username, other.username) && Objects.equals(userFirstName, other.userFirstName) 
+				&& Objects.equals(userLastName, other.userLastName) && Objects.equals(userEmail, other.userEmail);
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", username=" + username + ", password=" + password + ", role=" + role + "]";
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", user_first_name=" + userFirstName + ", user_last_name=" + userLastName + ", user_email=" + userEmail + ", role=" + role + "]";
 	}
 	
 }
