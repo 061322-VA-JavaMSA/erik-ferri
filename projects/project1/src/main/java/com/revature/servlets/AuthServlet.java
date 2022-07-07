@@ -36,8 +36,8 @@ public class AuthServlet extends HttpServlet {
 			User principal = as.login(username, password);
 			
 			HttpSession session = req.getSession();
-			session.setAttribute("userId", principal.getId());
-			session.setAttribute("userRole", principal.getRole());
+			session.setAttribute("id", principal.getId());
+			session.setAttribute("role", principal.getRole());
 			
 			// To make Chrome work with our cookie
 			String cookie = res.getHeader("Set-Cookie") + "; SameSite=None; Secure";
