@@ -9,9 +9,9 @@
 	<!-- configuration for session factory -->
 	<session-factory>
 		<!-- Showing credentials is bad practice -->
-		<property name="hibernate.connection.url">REDACTED</property>
-		<property name="hibernate.connection.username">REDACTED</property>
-		<property name="hibernate.connection.password">REDACTED</property>
+		<property name="hibernate.connection.url">jdbc:postgresql://database-1.cu0916am5vgq.us-east-1.rds.amazonaws.com:5432/postgres</property>
+		<property name="hibernate.connection.username">postgres</property>
+		<property name="hibernate.connection.password">#Ba$$a1e</property>
 
 		<property name="hibernate.driver_class">org.postgresql.Driver</property>
 		<property name="hibernate.connection.dialect">org.hibernate.dialect.PostgreSQLDialect</property>
