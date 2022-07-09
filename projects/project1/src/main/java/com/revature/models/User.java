@@ -19,13 +19,21 @@ public class User {
 	private int id;
 	@Column(name="ers_username", nullable = false, unique = true)
 	private String username;
-	@Column(name="ers_password", nullable = false)
+//	@Column(name="ers_password", nullable = false)
+//	private String password;
+//	@Column(name="user_first_name", nullable = false)
+//	private String userFirstName;
+//	@Column(name="user_last_name", nullable = false)
+//	private String userLastName;
+//	@Column(name="user_email", nullable = false)
+//	private String userEmail;
+	@Column(name="ers_password")
 	private String password;
-	@Column(name="user_first_name", nullable = false)
+	@Column(name="user_first_name")
 	private String userFirstName;
-	@Column(name="user_last_name", nullable = false)
+	@Column(name="user_last_name")
 	private String userLastName;
-	@Column(name="user_email", nullable = false)
+	@Column(name="user_email")
 	private String userEmail;
 	@Enumerated(EnumType.STRING)
 	private Role role;
