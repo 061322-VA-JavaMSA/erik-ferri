@@ -4,7 +4,7 @@ if(principal){
 }
 
 // Setting up event listener for login button
-let loginButton = document.getElementById('submitButton');
+let loginButton = document.getElementById('submit-btn');
 loginButton.addEventListener('click', login);
 
 async function login(){
