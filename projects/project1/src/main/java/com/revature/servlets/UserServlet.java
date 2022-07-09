@@ -96,7 +96,19 @@ public class UserServlet extends HttpServlet {
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
-		// behavior to handle POST request
+		InputStream reqBody = req.getInputStream();
+
+		User newUser = om.readValue(reqBody, User.class);
+
+		try {
+			us.createUser(newUser);
+
+			res.setStatus(201); // Status: Created
+		} catch (UserNotCreatedException e) {
+//			res.setStatus(400);
+			res.sendError(400, "Unable to create new user.");
+			e.printStackTrace();
+		}
 	}
 
 }
