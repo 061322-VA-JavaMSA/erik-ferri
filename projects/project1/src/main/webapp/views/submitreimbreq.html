@@ -4,9 +4,10 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ERS - Employee Portal</title>
+    <title>ERS - Submit Request</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <nav class="navbar sticky-top navbar-expand-lg navbar-light bg-light">
@@ -20,22 +21,28 @@
         </div>
     </nav>
     <main class="container-fluid mx-auto mt-3" style="padding: 0 7.5em;">
-        <h1 class="display-4 text-center mb-4" id="welcome"></h1>
+        <h1 class="display-4 text-center mb-4">Submit Reimbursement Request</h1>
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <a href="submitreimbreq.html" class="btn btn-primary btn-lg mb-3" role="button">Submit Reimbursement Request</a>
+                <input type="text" id="reimb-data">
             </div>
         </div>
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                <a href="" class="btn btn-primary btn-lg mb-3" role="button">View Pending Requests</a>
+                <input class="btn btn-outline-secondary mt-3" value="Submit Request" id="submit-btn">
             </div>
         </div>
-        <div class="row">
-            <div class="col-12 d-flex justify-content-center">
-                <a href="" class="btn btn-primary btn-lg mb-3" role="button">View Resolved Requests</a>
+        <!-- <div class="d-flex justify-content-center">
+            <div class="col-6">
+                <select class="form-select" aria-label="Default select example" id="reimb-type">
+                    <option selected>--Type--</option>
+                    <option value="1">Dining</option>
+                    <option value="2">Travel</option>
+                    <option value="3">Lodging</option>
+                  </select>
+                <input class="btn btn-outline-secondary mt-3" value="Submit Request" id="submit-btn">
             </div>
-        </div>
+        </div> -->
     </main>
     <footer class="bg-light text-center fixed-bottom">
         <div class="text-center p-3">
@@ -47,6 +54,6 @@
         integrity="sha384-MrcW6ZMFYlzcLA8Nl+NtUVF0sA7MsXsP1UyJoMp4YLEuNSfAP+JcXn/tWtIaxVXM"
         crossorigin="anonymous"></script>
     <script src="../scripts/main.js"></script>
-    <script src="../scripts/employeemain.js"></script>
+    <script src="../scripts/submitreimbreq.js"></script>
 </body>
 </html>
