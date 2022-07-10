@@ -74,7 +74,7 @@ async function login(username, password){
        */
        sessionStorage.setItem('principal', JSON.stringify(data));
       // redirect to the homepage on success
-      window.location.href="./index.html";
+      window.location.href="./employeemain.html";
   } else{
       console.log('Unable to login.')
   }

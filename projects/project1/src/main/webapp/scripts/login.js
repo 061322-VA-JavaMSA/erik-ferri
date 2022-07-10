@@ -1,6 +1,6 @@
 // Checks if a user is already logged in, if yes redirect to homepage
 if(principal){
-    window.location.href="./index.html";
+    window.location.href="./employeemain.html";
 }
 
 // Setting up event listener for login button
@@ -33,7 +33,7 @@ async function login(){
          */
          sessionStorage.setItem('principal', JSON.stringify(data));
         // redirect to the homepage on success
-        window.location.href="./index.html";
+        window.location.href="./employeemain.html";
     } else{
         console.log('Unable to login.')
     }
