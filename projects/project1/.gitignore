@@ -1,5 +1,5 @@
 # Hide Credentials
-# src/main/resources/hibernate.cfg.xml
+src/main/resources/hibernate.cfg.xml
 
 # Created by https://www.toptal.com/developers/gitignore/api/eclipse,maven
 # Edit at https://www.toptal.com/developers/gitignore?templates=eclipse,maven
