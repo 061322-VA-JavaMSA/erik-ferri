@@ -8,7 +8,7 @@
 
 	<!-- configuration for session factory -->
 	<session-factory>
-		<property name="hibernate.connection.url">REDACTED</property>
+		<property name="hibernate.connection.url">REDACTEDASDF</property>
 		<property name="hibernate.connection.username">REDACTED</property>
 		<property name="hibernate.connection.password">REDACTED</property>
 

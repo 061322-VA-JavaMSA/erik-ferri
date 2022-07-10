@@ -1,1 +1,4 @@
 /target/
+
+# Hide Credentials
+src/main/resources/connection.properties
