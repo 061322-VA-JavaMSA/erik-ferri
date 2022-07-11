@@ -21,6 +21,12 @@ public class Reimbursement {
 	private String reimbType;
 	@Column(name="reimb_status")
 	private String reimbStatus;
+	@Column(name="reimb_amount")
+	private float reimbAmount;
+	@Column(name="reimb_description")
+	private String reimbDescription;
+//	@Column(name="ers_users_fk_author")
+//	private int userId;
 	
 	public Reimbursement() {
 		super();
@@ -50,6 +56,24 @@ public class Reimbursement {
 	public void setReimbStatus(String reimbStatus) {
 		this.reimbStatus = reimbStatus;
 	}
+	public float getReimbAmount() {
+		return reimbAmount;
+	}
+	public void setReimbAmount(float reimbAmount) {
+		this.reimbAmount = reimbAmount;
+	}
+	public String getReimbDescription() {
+		return reimbDescription;
+	}
+	public void setReimbDescription(String reimbDescription) {
+		this.reimbDescription = reimbDescription;
+	}
+//	public int getUserId() {
+//		return userId;
+//	}
+//	public void setUserId(int userId) {
+//		this.userId = userId;
+//	}
 
 	@Override
 	public int hashCode() {
@@ -65,12 +89,15 @@ public class Reimbursement {
 		if (getClass() != obj.getClass())
 			return false;
 		Reimbursement other = (Reimbursement) obj;
-		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus);
+		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus) 
+		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription); 
+//		&& userId == other.userId;
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + "]";
+		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" + reimbAmount + ", reimb_description=" + reimbDescription + "]";
+//		 + ", ers_users_fk_author=" + userId
 	}
 	
 }

@@ -4,10 +4,15 @@ submitButton.addEventListener('click', submitReimbursement);
 
 async function submitReimbursement(){
 
-  let reimbType = document.getElementById('reimb-data').value;
+  let reimbType = document.getElementById('reimb-type').value;
+  let reimbAmount = document.getElementById('reimb-amount').value;
+  let reimbDescription = document.getElementById('reimb-description').value;
 
   const data = {
     reimbType: reimbType,
+    reimbStatus: "pending",
+    reimbAmount: reimbAmount,
+    reimbDescription: reimbDescription
   };
 
   fetch(`${apiUrl}/reimbursements`, {
@@ -25,7 +30,7 @@ async function submitReimbursement(){
     console.error('Error:', error);
   });
 
-  login(username,password);
+  // login(username,password);
 
   // if(response.status == 200){
   //     let data = await response.json();
