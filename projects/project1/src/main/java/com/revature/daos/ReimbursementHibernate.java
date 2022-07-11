@@ -42,29 +42,14 @@ public class ReimbursementHibernate implements ReimbursementDAO {
 	}
 
 	@Override
-	public Reimbursement getReimbursementByType(String reimbursementType) {
-		Reimbursement reimbursement = null;
+	public List<Reimbursement> getPendingReimbursements() {
+		List<Reimbursement> reimbursements = null;
 		
-		try(Session s = HibernateUtil.getSessionFactory().openSession();){
-			// SELECT * FROM ERS_REIMBURSEMENTS WHERE REIMB_TYPE = '';
-			
-			CriteriaBuilder cb = s.getCriteriaBuilder();
-			CriteriaQuery<Reimbursement> cq = cb.createQuery(Reimbursement.class);
-			// define entity to be searched
-			Root<Reimbursement> root = cq.from(Reimbursement.class);
-			
-			//define conditions
-			Predicate predicateForUsername = cb.equal(root.get("reimb_type"), reimbursementType);
-//			Predicate predicateForSomethingElse = cb.equal(root.get("password"), password);
-//			Predicate predicateFromUnameAndPass = cb.and(predicateForUsername, predicateForSomethingElse);
-			
-			cq.select(root).where(predicateForUsername);
-			
-			// retrieves the result
-			reimbursement = (Reimbursement) s.createQuery(cq).getSingleResult();
+		try(Session s = HibernateUtil.getSessionFactory().openSession()){
+			reimbursements = s.createQuery("select re from Reimbursement re where re.reimbStatus = 'pending'", Reimbursement.class).list();
 		}
 		
-		return reimbursement;
+		return reimbursements;
 	}
 
 	@Override

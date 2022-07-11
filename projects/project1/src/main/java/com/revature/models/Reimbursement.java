@@ -19,6 +19,8 @@ public class Reimbursement {
 	private int id;
 	@Column(name="reimb_type")
 	private String reimbType;
+	@Column(name="reimb_status")
+	private String reimbStatus;
 	
 	public Reimbursement() {
 		super();
@@ -40,6 +42,14 @@ public class Reimbursement {
 	public void setReimbType(String reimbType) {
 		this.reimbType = reimbType;
 	}
+	
+	public String getReimbStatus() {
+		return reimbStatus;
+	}
+
+	public void setReimbStatus(String reimbStatus) {
+		this.reimbStatus = reimbStatus;
+	}
 
 	@Override
 	public int hashCode() {
@@ -55,12 +65,12 @@ public class Reimbursement {
 		if (getClass() != obj.getClass())
 			return false;
 		Reimbursement other = (Reimbursement) obj;
-		return id == other.id && Objects.equals(reimbType, other.reimbType);
+		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus);
 	}
 
 	@Override
 	public String toString() {
-		return "User [id=" + id + ", reimb_type=" + reimbType + "]";
+		return "User [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + "]";
 	}
 	
 }

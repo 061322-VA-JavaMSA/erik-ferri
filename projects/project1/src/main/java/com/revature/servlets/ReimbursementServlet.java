@@ -15,7 +15,6 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dtos.ReimbursementDTO;
 import com.revature.exceptions.ReimbursementNotCreatedException;
-//import com.revature.exceptions.UserNotFoundException;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
 import com.revature.util.CorsFix;
@@ -27,10 +26,28 @@ public class ReimbursementServlet extends HttpServlet {
 	// object to convert to JSON format
 	private ObjectMapper om = new ObjectMapper();
 
-//	@Override
-//	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
-//
-//	}
+	@Override
+	protected void doGet(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+		
+		// Specifying that the response content-type will be JSON
+		CorsFix.addCorsHeader(req.getRequestURI(), res);
+		res.addHeader("Content-Type", "application/json");
+		
+		String pathInfo = req.getPathInfo();
+		
+		List<Reimbursement> reimbursements = rs.getPendingReimbursements();
+		List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
+
+		// converting Reimbursements to ReimbursementsDTO for data transfer
+		reimbursements.forEach(re -> reimbursementsDTO.add(new ReimbursementDTO(re)));
+
+		// retrieving print writer to write to the Response body
+		PrintWriter pw = res.getWriter();
+		// writing toString representation of Users to body
+		pw.write(om.writeValueAsString(reimbursementsDTO));
+
+		pw.close();
+	}
 	
 	@Override
 	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{

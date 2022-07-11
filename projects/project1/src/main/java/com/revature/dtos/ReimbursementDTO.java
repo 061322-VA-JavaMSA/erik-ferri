@@ -11,6 +11,7 @@ public class ReimbursementDTO {
 
 	private int id;
 	private String reimbType;
+	private String reimbStatus;
 	
 	public ReimbursementDTO() {
 		super();
@@ -31,8 +32,14 @@ public class ReimbursementDTO {
 	public String getReimbType() {
 		return reimbType;
 	}
-	public void setUsername(String reimbType) {
+	public void setReimbType(String reimbType) {
 		this.reimbType = reimbType;
+	}
+	public String getReimbStatus() {
+		return reimbStatus;
+	}
+	public void setReimbStatus(String reimbStatus) {
+		this.reimbStatus = reimbStatus;
 	}
 
 	@Override
@@ -48,10 +55,10 @@ public class ReimbursementDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		ReimbursementDTO other = (ReimbursementDTO) obj;
-		return id == other.id && Objects.equals(reimbType, other.reimbType);
+		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus);
 	}
 	@Override
 	public String toString() {
-		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + "]";
+		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + "]";
 	}
 }
