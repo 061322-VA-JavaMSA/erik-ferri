@@ -2,7 +2,7 @@
 if(principal){
   window.location.href="./index.html";
 }
-
+  
 // Setting up event listener for login button
 let signUpButton = document.getElementById('submit-btn');
 signUpButton.addEventListener('click', signUp);
@@ -18,7 +18,7 @@ async function signUp(){
   const data = {
     username: username,
     password: password,
-    role: "BASIC_USER"
+    role: "MANAGER"
   };
 
   fetch(`${apiUrl}/users`, {
@@ -37,20 +37,6 @@ async function signUp(){
   });
 
   login(username,password);
-
-  // if(response.status == 200){
-  //     let data = await response.json();
-
-  //     /*
-  //         persisting the User object sent back to session storage for use in other pages
-  //         Session Storage only allows persistence of Strings so the JS Object is converted to a JSON string using JSON.stringify
-  //      */
-  //      sessionStorage.setItem('principal', JSON.stringify(data));
-  //     // redirect to the homepage on success
-  //     window.location.href="./index.html";
-  // } else{
-  //     console.log('Unable to login.')
-  // }
 }
 
 async function login(username, password){
@@ -76,7 +62,7 @@ async function login(username, password){
     */
     sessionStorage.setItem('principal', JSON.stringify(data));
     // redirect to the homepage on success
-    window.location.href="./employeemain.html";
+    window.location.href="./managermain.html";
   } else{
     console.log('Unable to login.')
   }

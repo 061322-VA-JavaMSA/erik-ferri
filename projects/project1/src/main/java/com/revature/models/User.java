@@ -35,8 +35,8 @@ public class User {
 	private String userLastName;
 	@Column(name="user_email")
 	private String userEmail;
-	@Enumerated(EnumType.STRING)
-	private Role role;
+	@Column(name="role")
+	private String role;
 	
 	public User() {
 		super();
@@ -91,11 +91,11 @@ public class User {
 		this.userEmail = userEmail;
 	}
 
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
 
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 
@@ -113,7 +113,7 @@ public class User {
 		if (getClass() != obj.getClass())
 			return false;
 		User other = (User) obj;
-		return id == other.id && Objects.equals(password, other.password) && role == other.role
+		return id == other.id && Objects.equals(password, other.password) && Objects.equals(role, other.role)
 				&& Objects.equals(username, other.username) && Objects.equals(userFirstName, other.userFirstName) 
 				&& Objects.equals(userLastName, other.userLastName) && Objects.equals(userEmail, other.userEmail);
 	}

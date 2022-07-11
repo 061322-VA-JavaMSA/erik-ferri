@@ -15,7 +15,7 @@ public class UserDTO {
 	private String userFirstName;
 	private String userLastName;
 	private String userEmail;
-	private Role role;
+	private String role;
 	
 	public UserDTO() {
 		super();
@@ -61,10 +61,10 @@ public class UserDTO {
 	public void setUserEmail(String userEmail) {
 		this.userEmail = userEmail;
 	}
-	public Role getRole() {
+	public String getRole() {
 		return role;
 	}
-	public void setRole(Role role) {
+	public void setRole(String role) {
 		this.role = role;
 	}
 	@Override
@@ -80,7 +80,7 @@ public class UserDTO {
 		if (getClass() != obj.getClass())
 			return false;
 		UserDTO other = (UserDTO) obj;
-		return id == other.id && role == other.role && Objects.equals(username, other.username) 
+		return id == other.id && Objects.equals(role, other.role) && Objects.equals(username, other.username) 
 		&& Objects.equals(userFirstName, other.userFirstName) && Objects.equals(userLastName, other.userLastName) 
 		&& Objects.equals(userEmail, other.userEmail);
 	}
