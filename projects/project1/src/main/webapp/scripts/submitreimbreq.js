@@ -1,3 +1,5 @@
+console.log("user: " + principal.username);
+
 // Setting up event listener for submit button
 let submitButton = document.getElementById('submit-btn');
 submitButton.addEventListener('click', submitReimbursement);
@@ -12,7 +14,8 @@ async function submitReimbursement(){
     reimbType: reimbType,
     reimbStatus: "pending",
     reimbAmount: reimbAmount,
-    reimbDescription: reimbDescription
+    reimbDescription: reimbDescription,
+    userId: principal.id
   };
 
   fetch(`${apiUrl}/reimbursements`, {
