@@ -33,7 +33,11 @@ async function login(){
          */
          sessionStorage.setItem('principal', JSON.stringify(data));
         // redirect to the homepage on success
-        window.location.href="./employeemain.html";
+        if(data.role == "BASIC_USER") {
+            window.location.href="./employeemain.html";
+        } else {
+            window.location.href="./managermain.html";
+        }
     } else{
         console.log('Unable to login.')
     }
