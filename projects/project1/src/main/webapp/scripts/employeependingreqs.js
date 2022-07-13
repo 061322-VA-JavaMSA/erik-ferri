@@ -1,7 +1,9 @@
+console.log("user = " + principal.id);
+let userId = principal.id;
 let pendingReqsList = document.getElementById("pending-reqs");
 
 async function getPendingReqs() {
-  let response = await fetch(`${apiUrl}/reimbursements`);
+  let response = await fetch(`${apiUrl}/reimbursements/${userId}`);
 
   if(response.status == 200) {
     let data = await response.json();

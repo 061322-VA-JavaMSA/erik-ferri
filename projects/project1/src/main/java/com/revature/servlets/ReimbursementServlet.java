@@ -35,18 +35,35 @@ public class ReimbursementServlet extends HttpServlet {
 		
 		String pathInfo = req.getPathInfo();
 		
-		List<Reimbursement> reimbursements = rs.getPendingReimbursements();
-		List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
+		if (pathInfo == null) {
+			List<Reimbursement> reimbursements = rs.getPendingReimbursements();
+			List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
 
-		// converting Reimbursements to ReimbursementsDTO for data transfer
-		reimbursements.forEach(re -> reimbursementsDTO.add(new ReimbursementDTO(re)));
+			// converting Reimbursements to ReimbursementsDTO for data transfer
+			reimbursements.forEach(re -> reimbursementsDTO.add(new ReimbursementDTO(re)));
 
-		// retrieving print writer to write to the Response body
-		PrintWriter pw = res.getWriter();
-		// writing toString representation of Users to body
-		pw.write(om.writeValueAsString(reimbursementsDTO));
+			// retrieving print writer to write to the Response body
+			PrintWriter pw = res.getWriter();
+			// writing toString representation of Reimbursements to body
+			pw.write(om.writeValueAsString(reimbursementsDTO));
 
-		pw.close();
+			pw.close();
+		} else {
+			int id = Integer.parseInt(pathInfo.substring(1));
+
+			List<Reimbursement> reimbursements = rs.getPendingReimbursementsByUserId(id);
+			List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
+			
+			// converting Reimbursements to ReimbursementDTOs for data transfer
+			reimbursements.forEach(re -> reimbursementsDTO.add(new ReimbursementDTO(re)));
+
+			// retrieving print writer to write to the Response body
+			PrintWriter pw = res.getWriter();
+			// writing toString representation of Reimbursements to body
+			pw.write(om.writeValueAsString(reimbursementsDTO));
+
+			pw.close();
+		}
 	}
 	
 	@Override
