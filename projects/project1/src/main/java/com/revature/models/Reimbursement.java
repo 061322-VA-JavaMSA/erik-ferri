@@ -9,6 +9,8 @@ import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
@@ -27,6 +29,9 @@ public class Reimbursement {
 	private String reimbDescription;
 	@Column(name="ers_users_fk_author")
 	private int userId;
+//	@ManyToOne
+//	@JoinColumn(name = "ers_users_fk_author")
+//	private User user;
 	
 	public Reimbursement() {
 		super();
@@ -91,6 +96,7 @@ public class Reimbursement {
 		Reimbursement other = (Reimbursement) obj;
 		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus) 
 		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription) && userId == other.userId;
+//		&& Objects.equals(user, other.user);
 	}
 
 	@Override
@@ -98,5 +104,10 @@ public class Reimbursement {
 		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" 
 		+ reimbAmount + ", reimb_description=" + reimbDescription+ ", ers_users_fk_author=" + userId + "]";
 	}
+//	@Override
+//	public String toString() {
+//		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" 
+//		+ reimbAmount + ", reimb_description=" + reimbDescription + "]";
+//	}
 	
 }

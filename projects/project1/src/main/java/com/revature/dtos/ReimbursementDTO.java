@@ -14,7 +14,7 @@ public class ReimbursementDTO {
 	private String reimbStatus;
 	private float reimbAmount;
 	private String reimbDescription;
-//	private int userId;
+	private int userId;
 	
 	public ReimbursementDTO() {
 		super();
@@ -24,6 +24,10 @@ public class ReimbursementDTO {
 	public ReimbursementDTO(Reimbursement re) {
 		id = re.getId();
 		reimbType = re.getReimbType();
+		reimbStatus = re.getReimbStatus();
+		reimbAmount = re.getReimbAmount();
+		reimbDescription = re.getReimbDescription();
+		userId = re.getUserId();
 	}
 	
 	public int getId() {
@@ -56,12 +60,12 @@ public class ReimbursementDTO {
 	public void setReimbDescription(String reimbDescription) {
 		this.reimbDescription = reimbDescription;
 	}
-//	public int getUserId() {
-//		return userId;
-//	}
-//	public void setUserId(int userId) {
-//		this.userId = userId;
-//	}
+	public int getUserId() {
+		return userId;
+	}
+	public void setUser(int userId) {
+		this.userId = userId;
+	}
 
 	@Override
 	public int hashCode() {
@@ -77,12 +81,10 @@ public class ReimbursementDTO {
 			return false;
 		ReimbursementDTO other = (ReimbursementDTO) obj;
 		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus) 
-		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription); 
-//		&& userId == other.userId;
+		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription) && userId == other.userId;
 	}
 	@Override
 	public String toString() {
-		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" + reimbAmount + ", reimb_description=" + reimbDescription + "]";
-//		 + ", ers_users_fk_author=" + userId
+		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" + reimbAmount + ", reimb_description=" + reimbDescription + ", ers_users_fk_author=" + userId + "]";
 	}
 }

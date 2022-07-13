@@ -1,15 +1,19 @@
 let pendingReqsList = document.getElementById("pending-reqs");
 
-let pendingReqs = fetch(`${apiUrl}/reimbursements`)
-.then(response => response.json())
-.then(data => {
-  console.log('Success:', data);
-  for (reimbReq in data) {
-    let pendingReqItem = document.createElement('li');
-    pendingReqItem.innerHTML = `${data[reimbReq].reimbType}`;
-    pendingReqsList.appendChild(pendingReqItem);
+async function getPendingReqs() {
+  let response = await fetch(`${apiUrl}/reimbursements`);
+
+  if(response.status == 200) {
+    let data = await response.json();
+
+    for (reimbReq in data) {
+      let pendingReqItem = document.createElement('li');
+      pendingReqItem.innerHTML = `${data[reimbReq].reimbType}`;
+      pendingReqsList.appendChild(pendingReqItem);
+    }
+  } else {
+    console.log('Unable to retrieve requests.')
   }
-})
-.catch((error) => {
-  console.error('Error:', error);
-});
+}
+
+getPendingReqs();
