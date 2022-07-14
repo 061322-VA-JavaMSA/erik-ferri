@@ -49,10 +49,26 @@ public class ReimbursementServlet extends HttpServlet {
 			pw.write(om.writeValueAsString(reimbursementsDTO));
 
 			pw.close();
-		} else {
-			int id = Integer.parseInt(pathInfo.substring(1));
+//		Remove last character of pathInfo
+		} else if (pathInfo.substring(0, pathInfo.length() - 1).equals("/pending/")){
+			int id = Integer.parseInt(pathInfo.substring(9));
 
 			List<Reimbursement> reimbursements = rs.getPendingReimbursementsByUserId(id);
+			List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
+			
+			// converting Reimbursements to ReimbursementDTOs for data transfer
+			reimbursements.forEach(re -> reimbursementsDTO.add(new ReimbursementDTO(re)));
+
+			// retrieving print writer to write to the Response body
+			PrintWriter pw = res.getWriter();
+			// writing toString representation of Reimbursements to body
+			pw.write(om.writeValueAsString(reimbursementsDTO));
+
+			pw.close();
+		} else {
+			int id = Integer.parseInt(pathInfo.substring(10));
+
+			List<Reimbursement> reimbursements = rs.getResolvedReimbursementsByUserId(id);
 			List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
 			
 			// converting Reimbursements to ReimbursementDTOs for data transfer
@@ -91,9 +107,6 @@ public class ReimbursementServlet extends HttpServlet {
 			CorsFix.addCorsHeader(req.getRequestURI(), res);
 			res.addHeader("Content-Type", "application/json");
 			
-//			String pathInfo = req.getPathInfo();
-//			int id = Integer.parseInt(pathInfo.substring(1));
-//			String reimbStatus = pathInfo.substring(2);
 			int id = Integer.parseInt(req.getParameter("id"));
 			String reimbStatus = req.getParameter("reimbStatus");
 
