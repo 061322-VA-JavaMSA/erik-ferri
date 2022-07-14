@@ -31,6 +31,7 @@ async function approve(id) {
     },
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   });
+  location.reload();
   return response.json(); // parses JSON response into native JavaScript objects
 }
 
@@ -46,5 +47,6 @@ async function deny(id) {
     },
     body: JSON.stringify(data) // body data type must match "Content-Type" header
   });
+  location.reload();
   return response.json(); // parses JSON response into native JavaScript objects
 }
