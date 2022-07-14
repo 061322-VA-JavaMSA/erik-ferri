@@ -29,12 +29,12 @@ public class ReimbursementService {
 		return re;
 	}
 
-	public Reimbursement approveReimbursement(int id) throws ReimbursementNotFoundException {
-		Reimbursement re = rd.approveReimbursement(id);
-		if (re == null) {
+	public int updateReimbursement(int id, String status) throws ReimbursementNotFoundException {
+		int result = rd.updateReimbursement(id, status);
+		if (result == 0) {
 			throw new ReimbursementNotFoundException();
 		}
-		return re;
+		return result;
 	}
 	
 

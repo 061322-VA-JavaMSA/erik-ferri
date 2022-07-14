@@ -91,11 +91,14 @@ public class ReimbursementServlet extends HttpServlet {
 			CorsFix.addCorsHeader(req.getRequestURI(), res);
 			res.addHeader("Content-Type", "application/json");
 			
-			String pathInfo = req.getPathInfo();
-			int id = Integer.parseInt(pathInfo.substring(1));
+//			String pathInfo = req.getPathInfo();
+//			int id = Integer.parseInt(pathInfo.substring(1));
+//			String reimbStatus = pathInfo.substring(2);
+			int id = Integer.parseInt(req.getParameter("id"));
+			String reimbStatus = req.getParameter("reimbStatus");
 
 			try {
-				Reimbursement re = rs.approveReimbursement(id);
+				rs.updateReimbursement(id, reimbStatus);
 			} catch (ReimbursementNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
