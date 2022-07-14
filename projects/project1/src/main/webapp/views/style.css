@@ -5,3 +5,39 @@
 .btn-signup-portal {
     width: 150px;
 }
+
+li {
+    list-style: none;
+    /* border: 1px solid black; */
+}
+
+.icon-span {
+    height: 30px;
+    width: 0;
+    text-align: center;
+    color: white;
+    display: inline-block;
+    transition: 0.2s linear;
+    opacity: 0;
+}
+
+li:hover span {
+    width: 40px;
+    opacity: 1.0;
+}
+
+.check {
+    background-color: green;
+    /* border-right: 3px solid white; */
+}
+
+.trash {
+    background-color: red;
+    margin-right: 5px;
+}
+
+.submitted-by {
+    color: grey;
+    /* float: right;
+    white-space: nowrap; */
+}
