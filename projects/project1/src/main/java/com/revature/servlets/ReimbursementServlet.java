@@ -15,6 +15,7 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dtos.ReimbursementDTO;
 import com.revature.exceptions.ReimbursementNotCreatedException;
+import com.revature.exceptions.ReimbursementNotFoundException;
 import com.revature.models.Reimbursement;
 import com.revature.services.ReimbursementService;
 import com.revature.util.CorsFix;
@@ -67,7 +68,7 @@ public class ReimbursementServlet extends HttpServlet {
 	}
 	
 	@Override
-	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException{
+	protected void doPost(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
 		InputStream reqBody = req.getInputStream();
 
 		Reimbursement newReimbursement = om.readValue(reqBody, Reimbursement.class);
@@ -82,5 +83,23 @@ public class ReimbursementServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	  @Override
+	  protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	
+			// Specifying that the response content-type will be JSON
+			CorsFix.addCorsHeader(req.getRequestURI(), res);
+			res.addHeader("Content-Type", "application/json");
+			
+			String pathInfo = req.getPathInfo();
+			int id = Integer.parseInt(pathInfo.substring(1));
+
+			try {
+				Reimbursement re = rs.approveReimbursement(id);
+			} catch (ReimbursementNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	  }
 
 }

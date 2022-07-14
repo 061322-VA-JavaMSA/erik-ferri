@@ -9,6 +9,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import com.revature.models.Reimbursement;
 import com.revature.util.HibernateUtil;
 
+import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -39,6 +40,28 @@ public class ReimbursementHibernate implements ReimbursementDAO {
 		}
 		
 		return reimbursement;
+	}
+	
+	@Override
+	public Reimbursement approveReimbursement(int id) {
+		Reimbursement re = null;
+		Transaction transaction = null;
+		
+		try(Session s = HibernateUtil.getSessionFactory().openSession();){
+            // start a transaction
+            transaction = s.beginTransaction();
+
+            // save the Reimbursement object
+            String hql = "UPDATE Reimbursement set reimbStatus = 'approved' " + "WHERE id = :reimbId";
+            Query query = s.createQuery(hql);
+            query.setParameter("reimbId", id);
+            int result = query.executeUpdate();
+            System.out.println("Rows affected: " + result);
+
+            // commit transaction
+            transaction.commit();
+		}
+		return re;
 	}
 
 	@Override

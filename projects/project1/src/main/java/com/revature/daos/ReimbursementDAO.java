@@ -7,6 +7,7 @@ import com.revature.models.Reimbursement;
 public interface ReimbursementDAO {
 	Reimbursement insertReimbursement(Reimbursement re);
 	Reimbursement getReimbursementById(int id);
+	Reimbursement approveReimbursement(int id);
 	List<Reimbursement> getPendingReimbursements();
 	List<Reimbursement> getPendingReimbursementsByUserId(int id);
 	List<Reimbursement> getReimbursements();

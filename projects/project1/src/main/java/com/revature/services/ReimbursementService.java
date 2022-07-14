@@ -29,6 +29,15 @@ public class ReimbursementService {
 		return re;
 	}
 
+	public Reimbursement approveReimbursement(int id) throws ReimbursementNotFoundException {
+		Reimbursement re = rd.approveReimbursement(id);
+		if (re == null) {
+			throw new ReimbursementNotFoundException();
+		}
+		return re;
+	}
+	
+
 	public List<Reimbursement> getPendingReimbursements() {
 		List<Reimbursement> reimbursements = rd.getPendingReimbursements();
 		return reimbursements;
