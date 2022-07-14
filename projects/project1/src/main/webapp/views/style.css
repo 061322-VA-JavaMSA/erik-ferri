@@ -2,13 +2,16 @@
     width: 400px;
 }
 
+.btn-mg-portal {
+    width: 420px;
+}
+
 .btn-signup-portal {
     width: 150px;
 }
 
 li {
     list-style: none;
-    /* border: 1px solid black; */
 }
 
 .icon-span {
@@ -28,7 +31,6 @@ li:hover span {
 
 .check {
     background-color: green;
-    /* border-right: 3px solid white; */
 }
 
 .trash {
@@ -38,6 +40,4 @@ li:hover span {
 
 .submitted-by {
     color: grey;
-    /* float: right;
-    white-space: nowrap; */
 }
