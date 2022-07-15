@@ -45,3 +45,15 @@ li:hover span {
 .submitted-by {
     color: grey;
 }
+
+#user-icon {
+    width: 500px;
+}
+
+#employee-name {
+    font-size: 60px
+}
+
+#employee-username {
+    font-size: 30px;
+}

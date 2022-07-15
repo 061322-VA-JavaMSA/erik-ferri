@@ -19,7 +19,9 @@ if (principalString) {
 
     // createNavElement('Tasks', nav_left, './tasks.html', null);
 
+    createNavElement('Profile', nav_right, null, openProfile);
     createNavElement('Logout', nav_right, null, logout);
+    
 } else {
     createNavElement('Login', nav_right, './login.html', null);
     createNavElement('Sign Up', nav_right, './signupportal.html', null);
@@ -42,6 +44,10 @@ async function logout() {
     } else {
         console.log('Unable to logout.')
     }
+}
+
+function openProfile() {
+    window.location.href="./employeeprofile.html";
 }
 
 // Reusable function to create nav element in navbar
