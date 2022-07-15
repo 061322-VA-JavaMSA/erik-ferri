@@ -46,31 +46,43 @@ public class UserServlet extends HttpServlet {
 
 		// if pathInfo is null, the req should be to /users -> send back all users
 		if (pathInfo == null) {
+			// retrieving employees from db using UserService
+			List<User> users = us.getEmployees();
+			List<UserDTO> usersDTO = new ArrayList<>();
 
+			// converting Users to UserDTOs for data transfer
+			users.forEach(u -> usersDTO.add(new UserDTO(u)));
+
+			// retrieving print writer to write to the Response body
+			PrintWriter pw = res.getWriter();
+			// writing toString representation of Users to body
+			pw.write(om.writeValueAsString(usersDTO));
+
+			pw.close();
 			/*-
 			 *  HttpSession allows us to retrieve information placed in the session object passed in a previous HttpResponse 
 			 *  	- in this case, the Session is set in the AuthServlet
 			 */
-			HttpSession session = req.getSession();
-
-			if (session.getAttribute("userRole")!= null && session.getAttribute("userRole").equals(Role.ADMIN)) {
-				// retrieving users from db using UserService
-				List<User> users = us.getUsers();
-				List<UserDTO> usersDTO = new ArrayList<>();
-
-				// converting Users to UserDTOs for data transfer
-				users.forEach(u -> usersDTO.add(new UserDTO(u)));
-
-				// retrieving print writer to write to the Response body
-				PrintWriter pw = res.getWriter();
-				// writing toString representation of Users to body
-				pw.write(om.writeValueAsString(usersDTO));
-
-				pw.close();
-			}else {
-				// if the user making the request is not an admin
-				res.sendError(401, "Unauthorized request.");
-			}
+//			HttpSession session = req.getSession();
+//
+//			if (session.getAttribute("userRole")!= null && session.getAttribute("userRole").equals(Role.ADMIN)) {
+//				// retrieving users from db using UserService
+//				List<User> users = us.getUsers();
+//				List<UserDTO> usersDTO = new ArrayList<>();
+//
+//				// converting Users to UserDTOs for data transfer
+//				users.forEach(u -> usersDTO.add(new UserDTO(u)));
+//
+//				// retrieving print writer to write to the Response body
+//				PrintWriter pw = res.getWriter();
+//				// writing toString representation of Users to body
+//				pw.write(om.writeValueAsString(usersDTO));
+//
+//				pw.close();
+//			}else {
+//				// if the user making the request is not an admin
+//				res.sendError(401, "Unauthorized request.");
+//			}
 		} else {
 			// /1, /11, /{some-value}
 			// Have to remove "/" to get the id to be retrieved

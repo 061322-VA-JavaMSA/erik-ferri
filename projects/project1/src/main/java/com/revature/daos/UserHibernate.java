@@ -68,11 +68,11 @@ public class UserHibernate implements UserDAO {
 	}
 
 	@Override
-	public List<User> getUsers() {
+	public List<User> getEmployees() {
 		List<User> users = null;
 		
 		try(Session s = HibernateUtil.getSessionFactory().openSession()){
-			users = s.createQuery("from User", User.class).list();
+			users = s.createQuery("from User where role='BASIC_USER'", User.class).list();
 		}
 		
 		return users;

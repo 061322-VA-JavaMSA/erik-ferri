@@ -8,5 +8,5 @@ public interface UserDAO {
 	User insertUser(User u);
 	User getUserById(int id);
 	User getUserByUsername(String username);
-	List<User> getUsers();
+	List<User> getEmployees();
 }

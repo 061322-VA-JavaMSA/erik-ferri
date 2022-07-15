@@ -32,8 +32,8 @@ public class UserService {
 		return u;
 	}	
 	
-	public List<User> getUsers() {
-		List<User> users = ud.getUsers();
+	public List<User> getEmployees() {
+		List<User> users = ud.getEmployees();
 		return users;
 	}
 
