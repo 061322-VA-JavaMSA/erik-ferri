@@ -10,7 +10,8 @@ async function getPendingReqs() {
 
     for (reimbReq in data) {
       let pendingReqItem = document.createElement('li');
-      pendingReqItem.innerHTML = `${data[reimbReq].reimbType}`;
+      pendingReqItem.classList.add("list-group-item");
+      pendingReqItem.innerHTML = `${data[reimbReq].reimbType} - $${data[reimbReq].reimbAmount}: ${data[reimbReq].reimbDescription}`;
       pendingReqsList.appendChild(pendingReqItem);
     }
   } else {
