@@ -15,6 +15,7 @@ async function submitReimbReq() {
     reimbStatus: "pending",
     reimbAmount: reimbAmount,
     reimbDescription: reimbDescription,
+    reimbAuthor: `${principal.userFirstName} ${principal.userLastName}`,
     userId: principal.id
   };
 

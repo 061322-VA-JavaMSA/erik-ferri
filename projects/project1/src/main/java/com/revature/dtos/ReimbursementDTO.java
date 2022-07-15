@@ -18,6 +18,7 @@ public class ReimbursementDTO {
 	private OffsetDateTime reimbResolved;
 	private String reimbDescription;
 	private int reimbResolverId;
+	private String reimbAuthor;
 	private int userId;
 	
 	public ReimbursementDTO() {
@@ -34,6 +35,7 @@ public class ReimbursementDTO {
 		reimbResolved = re.getReimbResolved();
 		reimbDescription = re.getReimbDescription();
 		reimbResolverId = re.getReimbResolverId();
+		reimbAuthor = re.getReimbAuthor();
 		userId = re.getUserId();
 	}
 	
@@ -93,6 +95,13 @@ public class ReimbursementDTO {
 		this.reimbResolverId = reimbResolverId;
 	}
 	
+	public String getReimbAuthor() {
+		return reimbAuthor;
+	}
+	public void setReimbAuthor(String reimbAuthor) {
+		this.reimbAuthor = reimbAuthor;
+	}
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -117,13 +126,13 @@ public class ReimbursementDTO {
 		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus) 
 		&& reimbAmount == other.reimbAmount && Objects.equals(reimbSubmitted, other.reimbSubmitted) 
 		&& Objects.equals(reimbResolved, other.reimbResolved) && Objects.equals(reimbDescription, other.reimbDescription) 
-		&& reimbResolverId == other.reimbResolverId && userId == other.userId;
+		&& reimbResolverId == other.reimbResolverId && Objects.equals(reimbAuthor, other.reimbAuthor) && userId == other.userId;
 	}
 	
 	@Override
 	public String toString() {
 		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" 
 		+ reimbAmount + ", reimb_submitted=" + reimbSubmitted + ", reimb_resolved=" + reimbResolved + ", reimb_description="
-		+ reimbDescription + ", reimb_resolver=" + reimbResolverId + ", ers_users_fk_author=" + userId + "]";
+		+ reimbDescription + ", reimb_resolver=" + reimbResolverId + ", reimb_author=" + reimbAuthor + ", ers_users_fk_author=" + userId + "]";
 	}
 }

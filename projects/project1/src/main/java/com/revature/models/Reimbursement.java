@@ -34,6 +34,8 @@ public class Reimbursement {
 	private String reimbDescription;
 	@Column(name="reimb_resolver")
 	private int reimbResolverId;
+	@Column(name="reimb_author")
+	private String reimbAuthor;
 	@Column(name="ers_users_fk_author")
 	private int userId;
 //	@ManyToOne
@@ -101,6 +103,13 @@ public class Reimbursement {
 		this.reimbResolverId = reimbResolverId;
 	}
 	
+	public String getReimbAuthor() {
+		return reimbAuthor;
+	}
+	public void setReimbAuthor(String reimbAuthor) {
+		this.reimbAuthor = reimbAuthor;
+	}
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -123,15 +132,15 @@ public class Reimbursement {
 			return false;
 		Reimbursement other = (Reimbursement) obj;
 		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus) 
-		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription) && userId == other.userId
+		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription)
 		&& Objects.equals(reimbSubmitted, other.reimbSubmitted) && Objects.equals(reimbResolved, other.reimbResolved) 
-		&& reimbResolverId == other.reimbResolverId && userId == other.userId;
+		&& reimbResolverId == other.reimbResolverId && Objects.equals(reimbAuthor, other.reimbAuthor) && userId == other.userId;
 	}
 
 	@Override
 	public String toString() {
 		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" 
 		+ reimbAmount + ", reimb_submitted=" + reimbSubmitted + ", reimb_resolved=" + reimbResolved + ", reimb_description="
-		+ reimbDescription + ", reimb_resolver=" + reimbResolverId + ", ers_users_fk_author=" + userId + "]";
+		+ reimbDescription + ", reimb_resolver=" + reimbResolverId + ", reimb_author=" + reimbAuthor + ", ers_users_fk_author=" + userId + "]";
 	}
 }
