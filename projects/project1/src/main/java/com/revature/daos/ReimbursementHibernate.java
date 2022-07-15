@@ -43,7 +43,7 @@ public class ReimbursementHibernate implements ReimbursementDAO {
 	}
 	
 	@Override
-	public int updateReimbursement(int id, String reimbStatus) {
+	public int updateReimbursement(int id, String reimbStatus, int reimbResolverId) {
 		Transaction transaction = null;
 		
 		try(Session s = HibernateUtil.getSessionFactory().openSession();){
@@ -51,9 +51,10 @@ public class ReimbursementHibernate implements ReimbursementDAO {
             transaction = s.beginTransaction();
 
             // save the Reimbursement object
-            String hql = "update Reimbursement set reimbStatus = :reimbStatus where id = :reimbId";
+            String hql = "update Reimbursement set reimbStatus = :reimbStatus, reimbResolverId = :reimbResolverId where id = :reimbId";
             Query query = s.createQuery(hql);
             query.setParameter("reimbStatus", reimbStatus);
+            query.setParameter("reimbResolverId", reimbResolverId);
             query.setParameter("reimbId", id);
             int result = query.executeUpdate();
             System.out.println("Rows affected: " + result);

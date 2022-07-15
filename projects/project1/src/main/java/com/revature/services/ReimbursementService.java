@@ -29,8 +29,8 @@ public class ReimbursementService {
 		return re;
 	}
 
-	public int updateReimbursement(int id, String status) throws ReimbursementNotFoundException {
-		int result = rd.updateReimbursement(id, status);
+	public int updateReimbursement(int id, String status, int reimbResolverId) throws ReimbursementNotFoundException {
+		int result = rd.updateReimbursement(id, status, reimbResolverId);
 		if (result == 0) {
 			throw new ReimbursementNotFoundException();
 		}

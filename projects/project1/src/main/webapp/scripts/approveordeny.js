@@ -22,9 +22,10 @@ getPendingReqs();
 async function approve(id) {
   const data = {
     reimbId: id,
-    reimbStatus: "approved"
+    reimbStatus: "approved",
+    reimbResolverId: principal.id
   }
-  const response = await fetch(`${apiUrl}/reimbursements/?id=${data.reimbId}&reimbStatus=${data.reimbStatus}`, {
+  const response = await fetch(`${apiUrl}/reimbursements/?id=${data.reimbId}&reimbStatus=${data.reimbStatus}&reimbResolverId=${data.reimbResolverId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -38,9 +39,10 @@ async function approve(id) {
 async function deny(id) {
   const data = {
     reimbId: id,
-    reimbStatus: "denied"
+    reimbStatus: "denied",
+    reimbResolverId: principal.id
   }
-  const response = await fetch(`${apiUrl}/reimbursements/?id=${data.reimbId}&reimbStatus=${data.reimbStatus}`, {
+  const response = await fetch(`${apiUrl}/reimbursements/?id=${data.reimbId}&reimbStatus=${data.reimbStatus}&reimbResolverId=${data.reimbResolverId}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'

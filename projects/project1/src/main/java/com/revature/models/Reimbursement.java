@@ -1,5 +1,6 @@
 package com.revature.models;
 
+import java.time.OffsetDateTime;
 import java.util.Objects;
 
 import jakarta.persistence.Column;
@@ -25,8 +26,14 @@ public class Reimbursement {
 	private String reimbStatus;
 	@Column(name="reimb_amount")
 	private float reimbAmount;
+	@Column(name="reimb_submitted")
+	private OffsetDateTime reimbSubmitted;
+	@Column(name="reimb_resolved")
+	private OffsetDateTime reimbResolved;
 	@Column(name="reimb_description")
 	private String reimbDescription;
+	@Column(name="reimb_resolver")
+	private int reimbResolverId;
 	@Column(name="ers_users_fk_author")
 	private int userId;
 //	@ManyToOne
@@ -41,7 +48,6 @@ public class Reimbursement {
 	public int getId() {
 		return id;
 	}
-
 	public void setId(int id) {
 		this.id = id;
 	}
@@ -49,7 +55,6 @@ public class Reimbursement {
 	public String getReimbType() {
 		return reimbType;
 	}
-
 	public void setReimbType(String reimbType) {
 		this.reimbType = reimbType;
 	}
@@ -57,22 +62,45 @@ public class Reimbursement {
 	public String getReimbStatus() {
 		return reimbStatus;
 	}
-
 	public void setReimbStatus(String reimbStatus) {
 		this.reimbStatus = reimbStatus;
 	}
+	
 	public float getReimbAmount() {
 		return reimbAmount;
 	}
 	public void setReimbAmount(float reimbAmount) {
 		this.reimbAmount = reimbAmount;
 	}
+	
+	public OffsetDateTime getReimbSubmitted() {
+		return reimbSubmitted;
+	}
+	public void setReimbSubmitted(OffsetDateTime reimbSubmitted) {
+		this.reimbSubmitted = reimbSubmitted;
+	}
+	
+	public OffsetDateTime getReimbResolved() {
+		return reimbResolved;
+	}
+	public void setReimbResolved(OffsetDateTime reimbResolved) {
+		this.reimbResolved = reimbResolved;
+	}
+	
 	public String getReimbDescription() {
 		return reimbDescription;
 	}
 	public void setReimbDescription(String reimbDescription) {
 		this.reimbDescription = reimbDescription;
 	}
+	
+	public int getReimbResolverId() {
+		return reimbResolverId;
+	}
+	public void setReimbResolverId(int reimbResolverId) {
+		this.reimbResolverId = reimbResolverId;
+	}
+	
 	public int getUserId() {
 		return userId;
 	}
@@ -95,19 +123,15 @@ public class Reimbursement {
 			return false;
 		Reimbursement other = (Reimbursement) obj;
 		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus) 
-		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription) && userId == other.userId;
-//		&& Objects.equals(user, other.user);
+		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription) && userId == other.userId
+		&& Objects.equals(reimbSubmitted, other.reimbSubmitted) && Objects.equals(reimbResolved, other.reimbResolved) 
+		&& reimbResolverId == other.reimbResolverId && userId == other.userId;
 	}
 
 	@Override
 	public String toString() {
 		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" 
-		+ reimbAmount + ", reimb_description=" + reimbDescription+ ", ers_users_fk_author=" + userId + "]";
+		+ reimbAmount + ", reimb_submitted=" + reimbSubmitted + ", reimb_resolved=" + reimbResolved + ", reimb_description="
+		+ reimbDescription + ", reimb_resolver=" + reimbResolverId + ", ers_users_fk_author=" + userId + "]";
 	}
-//	@Override
-//	public String toString() {
-//		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" 
-//		+ reimbAmount + ", reimb_description=" + reimbDescription + "]";
-//	}
-	
 }
