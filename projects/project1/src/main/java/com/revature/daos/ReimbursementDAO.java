@@ -11,5 +11,5 @@ public interface ReimbursementDAO {
 	List<Reimbursement> getPendingReimbursements();
 	List<Reimbursement> getPendingReimbursementsByUserId(int id);
 	List<Reimbursement> getResolvedReimbursementsByUserId(int id);
-	List<Reimbursement> getReimbursements();
+	List<Reimbursement> getResolvedReimbursements();
 }

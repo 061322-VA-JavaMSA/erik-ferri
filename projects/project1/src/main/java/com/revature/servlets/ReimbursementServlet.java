@@ -14,9 +14,11 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dtos.ReimbursementDTO;
+import com.revature.dtos.UserDTO;
 import com.revature.exceptions.ReimbursementNotCreatedException;
 import com.revature.exceptions.ReimbursementNotFoundException;
 import com.revature.models.Reimbursement;
+import com.revature.models.User;
 import com.revature.services.ReimbursementService;
 import com.revature.util.CorsFix;
 
@@ -62,6 +64,20 @@ public class ReimbursementServlet extends HttpServlet {
 			// retrieving print writer to write to the Response body
 			PrintWriter pw = res.getWriter();
 			// writing toString representation of Reimbursements to body
+			pw.write(om.writeValueAsString(reimbursementsDTO));
+
+			pw.close();
+		} else if(pathInfo.equals("/resolved")) {
+			// retrieving resolved reimbursements from db using ReimbursementService
+			List<Reimbursement> reimbursements = rs.getResolvedReimbursements();
+			List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
+
+			// converting Users to UserDTOs for data transfer
+			reimbursements.forEach(re -> reimbursementsDTO.add(new ReimbursementDTO(re)));
+
+			// retrieving print writer to write to the Response body
+			PrintWriter pw = res.getWriter();
+			// writing toString representation of Users to body
 			pw.write(om.writeValueAsString(reimbursementsDTO));
 
 			pw.close();

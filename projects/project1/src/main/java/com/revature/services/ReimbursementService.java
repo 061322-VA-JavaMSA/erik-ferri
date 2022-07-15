@@ -53,8 +53,8 @@ public class ReimbursementService {
 		return reimbursements;
 	}	
 	
-	public List<Reimbursement> getReimbursements() {
-		List<Reimbursement> reimbursements = rd.getReimbursements();
+	public List<Reimbursement> getResolvedReimbursements() {
+		List<Reimbursement> reimbursements = rd.getResolvedReimbursements();
 		return reimbursements;
 	}
 

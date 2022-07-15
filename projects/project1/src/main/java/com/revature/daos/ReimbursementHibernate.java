@@ -105,14 +105,13 @@ public class ReimbursementHibernate implements ReimbursementDAO {
 	}
 
 	@Override
-	public List<Reimbursement> getReimbursements() {
+	public List<Reimbursement> getResolvedReimbursements() {
 		List<Reimbursement> reimbursements = null;
 		
 		try(Session s = HibernateUtil.getSessionFactory().openSession()){
-			reimbursements = s.createQuery("from Reimbursement", Reimbursement.class).list();
+			reimbursements = s.createQuery("from Reimbursement where reimbStatus !='pending'", Reimbursement.class).list();
 		}
 		
 		return reimbursements;
 	}
-
 }
