@@ -27,5 +27,6 @@ async function submitReimbReq() {
     },
     body: JSON.stringify(data)
   })
+  window.location.href="./employeemain.html";
   return response.json();
 }

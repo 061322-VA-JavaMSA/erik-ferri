@@ -21,15 +21,55 @@
         </div>
     </nav>
     <main class="container-fluid mx-auto mt-3" style="padding: 0 7.5em;">
-        <h1 class="display-4 text-center mb-4">Submit Reimbursement Request</h1>
+        <!-- <h1 class="display-4 text-center mb-4">Submit Reimbursement Request</h1> -->
         <div class="row">
             <div class="col-12 d-flex justify-content-center">
-                Type
+                <!-- Type
                 <input type="text" id="reimb-type">
                 Amount
                 <input type="text" id="reimb-amount">
                 Description
-                <input type="text" id="reimb-description">
+                <input type="text" id="reimb-description"> -->
+                <div class="container align-content-center" id="submitReimbReqForm">
+                    <form style="padding-top: 2.5em;">
+                        <div id="bottomBorder" class="d-flex justify-content-center">
+                            <h1 class="display-4">Submit Reimbursement Request</h1>
+                        </div>
+                        <hr>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <label>Type:</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <input class="inputstyle" type="text" name="reimb-type" id="reimb-type">
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <label>Amount:</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <input class="inputstyle" type="text" name="reimb-amount" id="reimb-amount">
+                        </div>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <label>Description:</label>
+                        </div>
+                        <div class="d-flex justify-content-center">
+                            <input class="inputstyle" type="text" name="reimb-description" id="reimb-description">
+                        </div>
+                        <br>
+                        <br>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <input class="btn btn-outline-secondary" value="Submit" id="submit-btn">
+                        </div>
+                        <br>
+                        <br>
+                        <div class="d-flex justify-content-center">
+                            <div style="color:red;" id="error-div"></div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
         <div class="row">
