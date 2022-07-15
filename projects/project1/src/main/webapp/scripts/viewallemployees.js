@@ -9,7 +9,7 @@ async function getEmployees() {
     for (employee in data) {
       let employeeItem = document.createElement('li');
       employeeItem.classList.add("list-group-item");
-      employeeItem.innerHTML = `${data[employee].username}`;
+      employeeItem.innerHTML = `${data[employee].userFirstName} ${data[employee].userLastName}: Username - ${data[employee].username}`;
       employeeList.appendChild(employeeItem);
     }
   } else {

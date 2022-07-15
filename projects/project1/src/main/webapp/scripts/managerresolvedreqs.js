@@ -11,7 +11,7 @@ async function getResolvedReqs() {
     for (reimbReq in data) {
       let resolvedReqItem = document.createElement('li');
       resolvedReqItem.classList.add("list-group-item");
-      resolvedReqItem.innerHTML = `${data[reimbReq].reimbType} - resolved by ${data[reimbReq].reimbResolverId}`;
+      resolvedReqItem.innerHTML = `${data[reimbReq].reimbType} - $${data[reimbReq].reimbAmount}: ${data[reimbReq].reimbDescription} - resolved by ${data[reimbReq].reimbResolver}`;
       resolvedReqsList.appendChild(resolvedReqItem);
     }
   } else {

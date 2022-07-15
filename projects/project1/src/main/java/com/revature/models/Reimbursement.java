@@ -33,7 +33,7 @@ public class Reimbursement {
 	@Column(name="reimb_description")
 	private String reimbDescription;
 	@Column(name="reimb_resolver")
-	private int reimbResolverId;
+	private String reimbResolver;
 	@Column(name="reimb_author")
 	private String reimbAuthor;
 	@Column(name="ers_users_fk_author")
@@ -96,11 +96,11 @@ public class Reimbursement {
 		this.reimbDescription = reimbDescription;
 	}
 	
-	public int getReimbResolverId() {
-		return reimbResolverId;
+	public String getReimbResolver() {
+		return reimbResolver;
 	}
-	public void setReimbResolverId(int reimbResolverId) {
-		this.reimbResolverId = reimbResolverId;
+	public void setReimbResolver(String reimbResolver) {
+		this.reimbResolver = reimbResolver;
 	}
 	
 	public String getReimbAuthor() {
@@ -134,13 +134,13 @@ public class Reimbursement {
 		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus) 
 		&& reimbAmount == other.reimbAmount && Objects.equals(reimbDescription, other.reimbDescription)
 		&& Objects.equals(reimbSubmitted, other.reimbSubmitted) && Objects.equals(reimbResolved, other.reimbResolved) 
-		&& reimbResolverId == other.reimbResolverId && Objects.equals(reimbAuthor, other.reimbAuthor) && userId == other.userId;
+		&& Objects.equals(reimbResolver, other.reimbResolver) && Objects.equals(reimbAuthor, other.reimbAuthor) && userId == other.userId;
 	}
 
 	@Override
 	public String toString() {
 		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" 
 		+ reimbAmount + ", reimb_submitted=" + reimbSubmitted + ", reimb_resolved=" + reimbResolved + ", reimb_description="
-		+ reimbDescription + ", reimb_resolver=" + reimbResolverId + ", reimb_author=" + reimbAuthor + ", ers_users_fk_author=" + userId + "]";
+		+ reimbDescription + ", reimb_resolver=" + reimbResolver + ", reimb_author=" + reimbAuthor + ", ers_users_fk_author=" + userId + "]";
 	}
 }

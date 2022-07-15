@@ -9,7 +9,7 @@ async function getEmployees() {
 
     for (employee in data) {
       let EmployeeItem = document.createElement('li');
-      EmployeeItem.innerHTML = `<li><button class="dropdown-item" type="button" onclick='getEmployeeReqs(${data[employee].id})'>${data[employee].username}</button></li>`;
+      EmployeeItem.innerHTML = `<li><button class="dropdown-item" type="button" onclick='getEmployeeReqs(${data[employee].id})'>${data[employee].userFirstName} ${data[employee].userLastName}</button></li>`;
       employeeList.appendChild(EmployeeItem);
     }
   } else {

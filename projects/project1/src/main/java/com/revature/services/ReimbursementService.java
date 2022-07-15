@@ -29,14 +29,13 @@ public class ReimbursementService {
 		return re;
 	}
 
-	public int updateReimbursement(int id, String status, int reimbResolverId) throws ReimbursementNotFoundException {
-		int result = rd.updateReimbursement(id, status, reimbResolverId);
+	public int updateReimbursement(int id, String status, String reimbResolver) throws ReimbursementNotFoundException {
+		int result = rd.updateReimbursement(id, status, reimbResolver);
 		if (result == 0) {
 			throw new ReimbursementNotFoundException();
 		}
 		return result;
 	}
-	
 
 	public List<Reimbursement> getPendingReimbursements() {
 		List<Reimbursement> reimbursements = rd.getPendingReimbursements();

@@ -17,7 +17,7 @@ public class ReimbursementDTO {
 	private OffsetDateTime reimbSubmitted;
 	private OffsetDateTime reimbResolved;
 	private String reimbDescription;
-	private int reimbResolverId;
+	private String reimbResolver;
 	private String reimbAuthor;
 	private int userId;
 	
@@ -34,7 +34,7 @@ public class ReimbursementDTO {
 		reimbSubmitted = re.getReimbSubmitted();
 		reimbResolved = re.getReimbResolved();
 		reimbDescription = re.getReimbDescription();
-		reimbResolverId = re.getReimbResolverId();
+		reimbResolver = re.getReimbResolver();
 		reimbAuthor = re.getReimbAuthor();
 		userId = re.getUserId();
 	}
@@ -88,11 +88,11 @@ public class ReimbursementDTO {
 		this.reimbDescription = reimbDescription;
 	}
 	
-	public int getReimbResolverId() {
-		return reimbResolverId;
+	public String getReimbResolver() {
+		return reimbResolver;
 	}
-	public void setReimbResolverId(int reimbResolverId) {
-		this.reimbResolverId = reimbResolverId;
+	public void setReimbResolver(String reimbResolver) {
+		this.reimbResolver = reimbResolver;
 	}
 	
 	public String getReimbAuthor() {
@@ -126,13 +126,13 @@ public class ReimbursementDTO {
 		return id == other.id && Objects.equals(reimbType, other.reimbType) && Objects.equals(reimbStatus, other.reimbStatus) 
 		&& reimbAmount == other.reimbAmount && Objects.equals(reimbSubmitted, other.reimbSubmitted) 
 		&& Objects.equals(reimbResolved, other.reimbResolved) && Objects.equals(reimbDescription, other.reimbDescription) 
-		&& reimbResolverId == other.reimbResolverId && Objects.equals(reimbAuthor, other.reimbAuthor) && userId == other.userId;
+		&& Objects.equals(reimbResolver, other.reimbResolver) && Objects.equals(reimbAuthor, other.reimbAuthor) && userId == other.userId;
 	}
 	
 	@Override
 	public String toString() {
 		return "ReimbursementDTO [id=" + id + ", reimb_type=" + reimbType + ", reimb_status=" + reimbStatus + ", reimb_amount=" 
 		+ reimbAmount + ", reimb_submitted=" + reimbSubmitted + ", reimb_resolved=" + reimbResolved + ", reimb_description="
-		+ reimbDescription + ", reimb_resolver=" + reimbResolverId + ", reimb_author=" + reimbAuthor + ", ers_users_fk_author=" + userId + "]";
+		+ reimbDescription + ", reimb_resolver=" + reimbResolver + ", reimb_author=" + reimbAuthor + ", ers_users_fk_author=" + userId + "]";
 	}
 }

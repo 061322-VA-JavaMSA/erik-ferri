@@ -140,10 +140,10 @@ public class ReimbursementServlet extends HttpServlet {
 			
 			int id = Integer.parseInt(req.getParameter("id"));
 			String reimbStatus = req.getParameter("reimbStatus");
-			int reimbResolverId = Integer.parseInt(req.getParameter("reimbResolverId"));
+			String reimbResolver = req.getParameter("reimbResolver");
 
 			try {
-				rs.updateReimbursement(id, reimbStatus, reimbResolverId);
+				rs.updateReimbursement(id, reimbStatus, reimbResolver);
 			} catch (ReimbursementNotFoundException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

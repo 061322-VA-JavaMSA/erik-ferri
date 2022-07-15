@@ -23,9 +23,9 @@ async function approve(id) {
   const data = {
     reimbId: id,
     reimbStatus: "approved",
-    reimbResolverId: principal.id
+    reimbResolver: principal.username
   }
-  const response = await fetch(`${apiUrl}/reimbursements/?id=${data.reimbId}&reimbStatus=${data.reimbStatus}&reimbResolverId=${data.reimbResolverId}`, {
+  const response = await fetch(`${apiUrl}/reimbursements/?id=${data.reimbId}&reimbStatus=${data.reimbStatus}&reimbResolver=${data.reimbResolver}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
@@ -40,9 +40,9 @@ async function deny(id) {
   const data = {
     reimbId: id,
     reimbStatus: "denied",
-    reimbResolverId: principal.id
+    reimbResolver: principal.username
   }
-  const response = await fetch(`${apiUrl}/reimbursements/?id=${data.reimbId}&reimbStatus=${data.reimbStatus}&reimbResolverId=${data.reimbResolverId}`, {
+  const response = await fetch(`${apiUrl}/reimbursements/?id=${data.reimbId}&reimbStatus=${data.reimbStatus}&reimbResolver=${data.reimbResolver}`, {
     method: 'PUT',
     headers: {
       'Content-Type': 'application/json'
