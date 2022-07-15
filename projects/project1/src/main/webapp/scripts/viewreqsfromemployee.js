@@ -30,7 +30,7 @@ async function getEmployeeReqs(id) {
     for (reimbReq in data) {
       let employeeReqItem = document.createElement('li');
       employeeReqItem.classList.add("list-group-item");
-      employeeReqItem.innerHTML = `${data[reimbReq].reimbType} - $${data[reimbReq].reimbAmount}: ${data[reimbReq].reimbDescription}`;
+      employeeReqItem.innerHTML = `${data[reimbReq].reimbType} - $${data[reimbReq].reimbAmount}: ${data[reimbReq].reimbDescription} - ${data[reimbReq].reimbStatus}`;
       employeeReqs.appendChild(employeeReqItem);
     }
   } else {
