@@ -57,5 +57,10 @@ public class ReimbursementService {
 		List<Reimbursement> reimbursements = rd.getResolvedReimbursements();
 		return reimbursements;
 	}
+	
+	public List<Reimbursement> getReimbursementsByUserId(int id) {
+		List<Reimbursement> reimbursements = rd.getReimbursementsByUserId(id);
+		return reimbursements;
+	}
 
 }

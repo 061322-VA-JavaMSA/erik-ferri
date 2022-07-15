@@ -114,4 +114,18 @@ public class ReimbursementHibernate implements ReimbursementDAO {
 		
 		return reimbursements;
 	}
+	
+	@Override
+	public List<Reimbursement> getReimbursementsByUserId(int id) {
+		List<Reimbursement> reimbursements = null;
+		
+		try(Session s = HibernateUtil.getSessionFactory().openSession()){
+			reimbursements = s.createQuery("from Reimbursement re where re.userId = :id")
+			.setParameter("id", id)
+			.list();
+			
+		}
+		
+		return reimbursements;
+	}
 }

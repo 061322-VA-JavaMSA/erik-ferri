@@ -38,7 +38,7 @@ public class ReimbursementServlet extends HttpServlet {
 		
 		String pathInfo = req.getPathInfo();
 		
-		if (pathInfo == null) {
+		if (pathInfo.equals("/pending")) {
 			List<Reimbursement> reimbursements = rs.getPendingReimbursements();
 			List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
 
@@ -81,10 +81,25 @@ public class ReimbursementServlet extends HttpServlet {
 			pw.write(om.writeValueAsString(reimbursementsDTO));
 
 			pw.close();
-		} else {
+		} else if(pathInfo.substring(0, pathInfo.length() - 1).equals("/resolved/")) {
 			int id = Integer.parseInt(pathInfo.substring(10));
 
 			List<Reimbursement> reimbursements = rs.getResolvedReimbursementsByUserId(id);
+			List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
+			
+			// converting Reimbursements to ReimbursementDTOs for data transfer
+			reimbursements.forEach(re -> reimbursementsDTO.add(new ReimbursementDTO(re)));
+
+			// retrieving print writer to write to the Response body
+			PrintWriter pw = res.getWriter();
+			// writing toString representation of Reimbursements to body
+			pw.write(om.writeValueAsString(reimbursementsDTO));
+
+			pw.close();
+		} else {
+			int id = Integer.parseInt(pathInfo.substring(1));
+			
+			List<Reimbursement> reimbursements = rs.getReimbursementsByUserId(id);
 			List<ReimbursementDTO> reimbursementsDTO = new ArrayList<>();
 			
 			// converting Reimbursements to ReimbursementDTOs for data transfer
