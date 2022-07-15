@@ -7,9 +7,10 @@ async function getEmployees() {
     let data = await response.json();
 
     for (employee in data) {
-      let EmployeeItem = document.createElement('li');
-      EmployeeItem.innerHTML = `${data[employee].username}`;
-      employeeList.appendChild(EmployeeItem);
+      let employeeItem = document.createElement('li');
+      employeeItem.classList.add("list-group-item");
+      employeeItem.innerHTML = `${data[employee].username}`;
+      employeeList.appendChild(employeeItem);
     }
   } else {
     console.log('Unable to retrieve employees.')

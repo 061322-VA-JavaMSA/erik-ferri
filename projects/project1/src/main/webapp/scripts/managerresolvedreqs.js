@@ -10,6 +10,7 @@ async function getResolvedReqs() {
 
     for (reimbReq in data) {
       let resolvedReqItem = document.createElement('li');
+      resolvedReqItem.classList.add("list-group-item");
       resolvedReqItem.innerHTML = `${data[reimbReq].reimbType} - resolved by ${data[reimbReq].reimbResolverId}`;
       resolvedReqsList.appendChild(resolvedReqItem);
     }
