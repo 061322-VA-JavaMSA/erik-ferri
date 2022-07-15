@@ -14,6 +14,7 @@ import javax.servlet.http.HttpSession;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.revature.dtos.UserDTO;
+import com.revature.exceptions.ReimbursementNotFoundException;
 import com.revature.exceptions.UserNotCreatedException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.models.Role;
@@ -122,5 +123,23 @@ public class UserServlet extends HttpServlet {
 			e.printStackTrace();
 		}
 	}
+	
+	  @Override
+	  protected void doPut(HttpServletRequest req, HttpServletResponse res) throws ServletException, IOException {
+	
+			// Specifying that the response content-type will be JSON
+			CorsFix.addCorsHeader(req.getRequestURI(), res);
+			res.addHeader("Content-Type", "application/json");
+			
+			int id = Integer.parseInt(req.getParameter("id"));
+			String username = req.getParameter("username");
+
+			try {
+				us.updateUsername(id, username);
+			} catch (UserNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	  }
 
 }

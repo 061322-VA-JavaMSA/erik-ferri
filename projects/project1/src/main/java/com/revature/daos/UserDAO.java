@@ -9,4 +9,5 @@ public interface UserDAO {
 	User getUserById(int id);
 	User getUserByUsername(String username);
 	List<User> getEmployees();
+	int updateUsername(int id, String username);
 }

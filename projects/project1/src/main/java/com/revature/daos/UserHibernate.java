@@ -9,6 +9,7 @@ import org.hibernate.exception.ConstraintViolationException;
 import com.revature.models.User;
 import com.revature.util.HibernateUtil;
 
+import jakarta.persistence.Query;
 import jakarta.persistence.criteria.CriteriaBuilder;
 import jakarta.persistence.criteria.CriteriaQuery;
 import jakarta.persistence.criteria.Predicate;
@@ -76,6 +77,28 @@ public class UserHibernate implements UserDAO {
 		}
 		
 		return users;
+	}
+	
+	@Override
+	public int updateUsername(int id, String username) {
+		Transaction transaction = null;
+		
+		try(Session s = HibernateUtil.getSessionFactory().openSession();){
+            // start a transaction
+            transaction = s.beginTransaction();
+
+            // save the Reimbursement object
+            String hql = "update User set username = :username where id = :id";
+            Query query = s.createQuery(hql);
+            query.setParameter("username", username);
+            query.setParameter("id", id);
+            int result = query.executeUpdate();
+            System.out.println("Rows affected: " + result);
+
+            // commit transaction
+            transaction.commit();
+            return result;
+		}
 	}
 
 }

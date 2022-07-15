@@ -4,6 +4,7 @@ import java.util.List;
 
 import com.revature.daos.UserDAO;
 import com.revature.daos.UserHibernate;
+import com.revature.exceptions.ReimbursementNotFoundException;
 import com.revature.exceptions.UserNotCreatedException;
 import com.revature.exceptions.UserNotFoundException;
 import com.revature.models.Role;
@@ -35,6 +36,14 @@ public class UserService {
 	public List<User> getEmployees() {
 		List<User> users = ud.getEmployees();
 		return users;
+	}
+	
+	public int updateUsername(int id, String username) throws UserNotFoundException {
+		int result = ud.updateUsername(id, username);
+		if (result == 0) {
+			throw new UserNotFoundException();
+		}
+		return result;
 	}
 
 }
