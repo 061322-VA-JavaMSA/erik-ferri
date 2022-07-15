@@ -60,7 +60,7 @@ public class ERSTest {
 	}
 	@Test
 	public void updateReimbursementNotFound() {
-		assertThrows(PersistenceException.class, () -> rs.updateReimbursement(9999999,"doesntexist",9999999));
+		assertThrows(PersistenceException.class, () -> rs.updateReimbursement(9999999,"doesntexist","doesntexist"));
 		System.out.println("PersistenceException was thrown when trying to update a Reimbursement that doesn't exist");
 	}
 	@Test
@@ -73,5 +73,10 @@ public class ERSTest {
 	public void getUserByIdNotFound() {
 		assertThrows(UserNotFoundException.class, () -> us.getUserById(9999999));
 		System.out.println("UserNotFoundException was thrown when trying to get a User that doesn't exist");
+	}
+	@Test
+	public void updateUsernameNotFound() {
+		assertThrows(PersistenceException.class, () -> us.updateUsername(9999999,"doesntexist"));
+		System.out.println("PersistenceException was thrown when trying to update a User that doesn't exist");
 	}
 }
