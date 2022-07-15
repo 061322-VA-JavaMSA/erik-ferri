@@ -25,9 +25,9 @@ public class UserDTO {
 	public UserDTO(User u) {
 		id = u.getId();
 		username = u.getUsername();
-		userFirstName = u.getUsername();
-		userLastName = u.getUsername();
-		userEmail = u.getUsername();
+		userFirstName = u.getUserFirstName();
+		userLastName = u.getUserLastName();
+//		userEmail = u.getuserEmail();
 		role = u.getRole();
 	}
 	

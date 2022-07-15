@@ -6,16 +6,22 @@ if(principal){
 // Setting up event listener for login button
 let signUpButton = document.getElementById('submit-btn');
 signUpButton.addEventListener('click', signUp);
+let userFirstName;
+let userLastName;
 let username;
 let password;
 let role;
 
 async function signUp(){
 
+  userFirstName = document.getElementById('first-name').value;
+  userLastName = document.getElementById('last-name').value;
   username = document.getElementById('username').value;
   password = document.getElementById('password').value;
 
   const data = {
+    userFirstName: userFirstName,
+    userLastName: userLastName,
     username: username,
     password: password,
     role: "BASIC_USER"

@@ -1,5 +1,7 @@
 let employeeName = document.getElementById("employee-name");
 let employeeUsername = document.getElementById("username");
 
-employeeName.innerHTML = principal.username;
+console.log(principal);
+
+employeeName.innerHTML += `<b>${principal.userFirstName} ${principal.userLastName}</b> <i class="fa fa-pencil" aria-hidden="true"></i>`;
 employeeUsername.innerHTML += principal.username;
