@@ -1,82 +1,77 @@
-/* Global Styles */
-* {
-  font-family: Arial, Helvetica, sans-serif;
+html {
+    height: 100%;
 }
-h1 {
-  color: #264D73;
-  font-size: 2.5rem;
-}
-h2, h3 {
-  color: #444;
-  font-weight: lighter;
-}
-h3 {
-  font-size: 1.3rem;
-}
+
 body {
-  padding: .5rem;
-  max-width: 1000px;
-  margin: auto;
+    height: 100%;
+    margin: 0;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background: linear-gradient(180deg, rgba(2,0,36,1) 0%, rgba(9,9,121,1) 35%, rgba(27,58,183)) fixed;
 }
-@media (min-width: 600px) {
-  body {
-    padding: 2rem;
-  }
+
+h1 {
+    margin-top: 0;
+    text-align: center;
+    color: whitesmoke;
+    text-shadow: 0px 4px 3px darkblue,
+                 0px 8px 13px blue,
+                 0px 18px 23px lightblue;
 }
-body, input[text] {
-  color: #333;
-  font-family: Cambria, Georgia, serif;
+
+p, ul, a {
+    font-family: Verdana;
 }
+
 a {
-  cursor: pointer;
-}
-button {
-  background-color: #eee;
-  border: none;
-  border-radius: 4px;
-  cursor: pointer;
-  color: black;
-  font-size: 1.2rem;
-  padding: 1rem;
-  margin-right: 1rem;
-  margin-bottom: 1rem;
-  margin-top: 1rem;
-}
-button:hover {
-  background-color: black;
-  color: white;
-}
-button:disabled {
-  background-color: #eee;
-  color: #aaa;
-  cursor: auto;
+    color: navy;
 }
 
-/* Navigation link styles */
-nav a {
-  padding: 5px 10px;
-  text-decoration: none;
-  margin-right: 10px;
-  margin-top: 10px;
-  display: inline-block;
-  background-color: #e8e8e8;
-  color: #3d3d3d;
-  border-radius: 4px;
+.container {
+    background-color: silver;
+    width: 50%;
+    margin: 50px auto 0;
+    border: 5px solid black;
+    border-radius: 50px;
+    padding: 20px;
+    padding-bottom: 30px;
+    box-shadow: 10px 10px 5px black;
+    animation: fadein 2s;
+    -moz-animation: fadein 2s; /*Firefox*/
+    -webkit-animation: fadein 2s; /*Safari and Chrome*/
+    -o-animation: fadein 2s; /*Opera*/
 }
 
-nav a:hover {
-  color: white;
-  background-color:  #42545C;
+@keyframes fadein {
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
 }
-nav a.active {
-  background-color: black;
-  color: white;
+
+@-moz-keyframes fadein { /*Firefox*/
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
 }
-hr {
-  margin: 1.5rem 0;
+@-webkit-keyframes fadein { /*Safari and Chrome*/
+    from {
+        opacity:0;
+    }
+    to {
+        opacity:1;
+    }
 }
-input[type="text"] {
-  box-sizing: border-box;
-  width: 100%;
-  padding: .5rem;
+@-o-keyframes fadein { /*Opera*/
+    from {
+        opacity:0;
+    }
+    to {
+        opacity: 1;
+    }
 }
