@@ -76,7 +76,7 @@ public class ERSTest {
 	}
 	@Test
 	public void updateUsernameNotFound() {
-		assertThrows(PersistenceException.class, () -> us.updateUsername(9999999,"doesntexist"));
+		assertThrows(UserNotFoundException.class, () -> us.updateUsername(9999999,"doesntexist"));
 		System.out.println("PersistenceException was thrown when trying to update a User that doesn't exist");
 	}
 }
